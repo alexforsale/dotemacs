@@ -3664,8 +3664,13 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
       #+begin_src emacs-lisp
         (setq lsp-keymap-prefix "C-c L")
         (customize-set-variable 'lsp-completion-provider :none)
-        (customize-set-variable 'lsp-toml-cache-path (expand-file-name ".cache/lsp-toml" +emacs-data-dir))
-        (customize-set-variable 'lsp-clojure-workspace-cache-dir (expand-file-name ".cache/lsp-toml" +emacs-data-dir))
+        (customize-set-variable 'lsp-toml-cache-path (expand-file-name ".cache/lsp/toml/" +emacs-data-dir))
+        (customize-set-variable 'lsp-pwsh-ext-path (expand-file-name ".cache/lsp/pwsh/" +emacs-data-dir))
+        (customize-set-variable 'lsp-pwsh-log-path (expand-file-name ".cache/lsp/pwsh/logs/" +emacs-data-dir))
+        (customize-set-variable 'lsp-magik-lsp-path (expand-file-name ".cache/magik-lsp/magik-language-server-0.5.1.jar" +emacs-data-dir))
+        (customize-set-variable 'lsp-eslint-unzipped-path (expand-file-name ".cache/lsp/eslint/unzipped/" +emacs-data-dir))
+        (customize-set-variable 'lsp-rust-analyzer-store-path (expand-file-name ".cache/lsp/rust/rust-analyzer/" +emacs-data-dir))
+        (customize-set-variable 'lsp-clojure-workspace-cache-dir (expand-file-name ".cache/lsp/clojure/" +emacs-data-dir))
         (defun +config/lsp-mode-setup-completion ()
           (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
                 '(orderless))) ;; Configure flex
