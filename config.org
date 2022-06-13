@@ -3656,6 +3656,9 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
           (straight-use-package 'lsp-ui)
           (when (featurep 'consult)
             (straight-use-package 'consult-lsp)))
+        (when (featurep 'treemacs)
+          (straight-use-package 'lsp-treemacs)
+          (lsp-treemacs-sync-mode 1))
       #+end_src
 ***** config
       #+begin_src emacs-lisp
