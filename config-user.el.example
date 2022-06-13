@@ -1,0 +1,139 @@
+;;; config-user.el --- Emacs configuration file -*- lexical-binding: t mode: emacs-lisp -*-
+;;; Commentary:
+;; See `https://java281.dynv6.net/~alexforsale/posts/Emacs-Configuration.html'
+;; for details.
+;;; Code:
+
+(setq user-full-name "Kristian Alexander P"
+      user-mail-address "alexforsale@yahoo.com")
+(customize-set-variable 'org-directory (expand-file-name "Documents/google-drive/org/" (getenv "HOME")))
+(customize-set-variable '+org-archives-file (expand-file-name "archives.org" org-directory))
+(customize-set-variable '+org-capture-todo-file (expand-file-name "todo.org" org-directory))
+(customize-set-variable '+org-capture-links-file (expand-file-name "links.org" org-directory))
+(customize-set-variable '+org-capture-notes-file (expand-file-name "notes.org" org-directory))
+(customize-set-variable '+org-capture-habits-file (expand-file-name "habits.org" org-directory))
+(customize-set-variable '+org-capture-projects-file (expand-file-name "projects.org" org-directory))
+(customize-set-variable 'org-agenda-files (list org-directory))
+(customize-set-variable '+emms-music-dir "~/Music")
+(customize-set-variable '+config-doom-theme 'doom-solarized-dark)
+(customize-set-variable '+config-standard-theme 'wombat)
+(customize-set-variable '+mail-directory "~/.mail")
+
+;; example theme customization
+(when (string= "doom-solarized-dark"
+               (or +config-doom-theme
+                   +config-standard-theme))
+  (setq doom-solarized-dark-brighter-text t)
+  (setq doom-solarized-dark-brighter-comments t)
+  (setq doom-solarized-dark-brighter-modeline t))
+
+;; UI Additional packages
+;; (require 'config-all-the-icons)
+;; (require 'config-doom-modelines)
+;; (require 'config-doom-themes)
+;; (when (display-graphic-p)
+;;   (require 'config-theme-magic))
+(require 'config-helpful)
+(require 'config-which-key)
+;; (require 'config-ace-window)
+;; (require 'config-perspective)
+;; (unless (or (featurep 'exwm)
+;;             (string= "exwm" (getenv "DESKTOP_SESSION")))
+;;   (require 'config-centaur-tabs)) ; doesn't look good in workspaces
+;; (require 'config-rainbow-mode)
+;; (require 'config-rainbow-delimiters)
+;; (require 'config-hl-todo)
+(require 'config-diminish)
+;; (require 'config-dashboard)
+;; (require 'config-alert)
+;; (require 'config-smartparens)
+;; (require 'config-treemacs)
+;; (require 'config-vertico-posframe)
+
+;; Editing Additional packages
+;; (require 'config-multiple-cursors)
+;; (require 'config-yasnippet)
+;; (require 'config-geiser)
+;; (require 'config-yaml-mode)
+;; (require 'config-toml-mode)
+;; (require 'config-nix-mode)
+;; (require 'config-markdown-mode)
+;; (require 'config-rust-mode)
+;; (require 'config-visual-regexp)
+;; (require 'config-undo-fu)
+;; (require 'config-block-nav)
+;; (require 'config-ansible)
+;; (require 'config-jinja2-mode)
+;; (require 'config-hydra)
+;; (require 'config-general)
+;; (require 'config-evil)
+;; (require 'config-aggressive-indent-mode)
+
+;; Org Additional packages
+;; (require 'config-org-roam)
+;; (require 'config-org-elfeed)
+;; (require 'config-org-gcal)
+;; (+config/org-gcal-setup-sync)
+(require 'config-org-journal)
+
+;; IDE Additional packages
+;; (require 'config-flycheck)
+;; (require 'config-projectile)
+;; (require 'config-lsp-mode)
+;; (require 'config-git-gutter)
+
+;; Email Additional packages
+;; (require 'config-notmuch)
+;; (require 'config-gnus-alias)
+;; (customize-set-variable '+config/mail-fetch-program "mbsync")
+
+;; Shell Additional packages
+;; (require 'config-vterm)
+
+;; Completion packages
+;; (require 'config-vertico)
+;; (require 'config-orderless)
+;; (require 'config-marginalia)
+;; (require 'config-consult)
+;; (require 'config-embark)
+;; (require 'config-corfu)
+;; (require 'config-cape)
+;; (require 'config-dabbrev)
+
+;; Misc tools packages
+;; (require 'config-pass)
+(require 'config-magit)
+(require 'config-git-modes)
+;;(require 'config-slime)
+;;(require 'config-sly) ; a better repl than slime
+;;(require 'config-paredit)
+;; (require 'config-telega)
+;; (require 'config-emms)
+;;(+config/emms-set-mpd) ; when using mpd
+;; (require 'config-w3m)
+;; (require 'config-pdf-tools)
+;; (require 'config-gist)
+;; (require 'config-ripgrep)
+;; (require 'config-restart-emacs)
+;; (require 'config-hugo)
+
+(defun +config/load-theme (theme)
+  "Load THEME after new frame.
+Also for the current frame"
+  (progn
+    (load-theme theme t)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (select-frame frame)
+                (when (display-graphic-p frame)
+                  (load-theme theme t))))))
+
+(cond ((and (featurep 'config-doom-themes)
+            (featurep 'consult)
+            (display-graphic-p))
+       (+config/load-theme +config-doom-theme))
+      (t
+       (+config/load-theme +config-standard-theme)))
+
+(provide 'config-user)
+;;; config-user.el ends here
