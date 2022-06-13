@@ -3696,6 +3696,17 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
           (straight-use-package 'consult-lsp)
           (define-key lsp-mode-map [remap xref-find-apropos] #'consult-lsp-symbols))
       #+end_src
+***** general
+      #+begin_src emacs-lisp
+        (with-eval-after-load 'config-general
+          (progn
+            (require 'general)
+            (+config/leader-def
+              :states '(normal visual)
+              "L" (general-simulate-key "C-c L"
+                    :name +lsp-keymap-prefix
+                    :which-key "LSP prefix"))))
+      #+end_src
 ***** python deps
       lsp server.
       #+begin_src sh :tangle no
