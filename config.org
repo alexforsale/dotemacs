@@ -739,13 +739,17 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
       #+begin_src emacs-lisp
         (unless +config/is-guix-system
           (straight-use-package 'doom-modeline))
+        (straight-use-package 'ghub)
+        (straight-use-package 'async)
       #+end_src
 ***** variables
       #+begin_src emacs-lisp
         (customize-set-variable 'doom-modeline-height 15)
         (customize-set-variable 'doom-modeline-bar-width 6)
         (customize-set-variable 'doom-modeline-minor-modes t)
-        (customize-set-variable 'doom-modeline-buffer-file-name-style 'truncate-except-project)
+        (customize-set-variable 'doom-modeline-buffer-file-name-style 'file-name)
+        (customize-set-variable 'doom-modeline-github t) ; uses `ghub' and `async' package
+        (customize-set-variable 'doom-modeline-indent-info t)
       #+end_src
 ***** hooks
       #+begin_src emacs-lisp
