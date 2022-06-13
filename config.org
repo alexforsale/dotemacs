@@ -41,6 +41,14 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
      (customize-set-variable '+config-doom-theme 'doom-solarized-dark)
      (customize-set-variable '+config-standard-theme 'wombat)
      (customize-set-variable '+mail-directory "~/.mail")
+
+     ;; example theme customization
+     (when (string= "doom-solarized-dark"
+                    (or +config-doom-theme
+                        +config-standard-theme))
+       (setq doom-solarized-dark-brighter-text t)
+       (setq doom-solarized-dark-brighter-comments t)
+       (setq doom-solarized-dark-brighter-modeline t))
    #+end_src
 ** UI Packages
    #+begin_src emacs-lisp
