@@ -3684,7 +3684,7 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
         (add-hook 'yaml-mode-hook #'lsp-deferred)
         (customize-set-variable 'lsp-yaml-schema-store-local-db (expand-file-name ".cache/lsp/lsp-yaml-schemas.json" +emacs-data-dir))
         (add-hook 'rust-mode-hook #'lsp-deferred)
-        (add-hook 'toml-mode-hook #'lsp-deferred)
+        (add-hook 'toml-mode-hook #'lsp)
         (add-hook 'python-mode-hook #'lsp-deferred)
         (add-hook 'nix-mode-hook #'lsp-deferred)
         (add-hook 'nginx-mode-hook #'lsp-deferred)
