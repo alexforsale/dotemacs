@@ -3707,6 +3707,9 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
         (defun +config/lsp-mode-setup-completion ()
           (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
                 '(orderless))) ;; Configure flex
+        (when (string= "arch" (getenv "DISTRO"))
+          ;; use `taplo-cli' from aur.
+          (customize-set-variable 'lsp-toml-command "/usr/bin/taplo"))
         (require 'lsp-mode)
       #+end_src
 ***** hook
