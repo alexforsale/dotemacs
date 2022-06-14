@@ -3174,7 +3174,9 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
           (when (featurep 'consult)
             (straight-use-package '(consult-org-roam :type git
                                                      :host github
-                                                     :repo "jgru/consult-org-roam"))))
+                                                     :repo "jgru/consult-org-roam"))
+
+            (require 'consult-org-roam)))
       #+end_src
 ***** for freebsd
       Need to install =emacsql= package from =pkg=.
