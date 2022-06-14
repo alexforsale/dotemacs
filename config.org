@@ -2420,13 +2420,14 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
 ***** general definer
       #+begin_src emacs-lisp
         (require 'general)
-        (when (featurep 'evil)
+        (when (not (featurep 'evil))
           (general-evil-setup t))
         (general-create-definer +config/leader-def
           :prefix +general-leader)
         (when (featurep 'evil)
           (general-create-definer +config/local-leader-def
-            :prefix +general-local-leader))
+            :prefix +general-local-leader
+            :non-normal-prefix +general-local-leader))
       #+end_src
 ***** Set title for which-key
       #+begin_src emacs-lisp
