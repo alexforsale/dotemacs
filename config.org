@@ -3145,7 +3145,7 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
        MimeType=x-scheme-handler/org-protocol
      #+end_src
      Then associate it with the =org-protocol://= link
-     #+begin_src sh
+     #+begin_src sh :tangle no :noeval
        [ $(command -v xdg-mime) ] && xdg-mime default org-protocol.desktop x-scheme-handler/org-protocol
      #+end_src
 *** Inherit properties
