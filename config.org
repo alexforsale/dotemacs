@@ -3564,8 +3564,8 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
            (general-define-key
              :prefix +general-leader
              :non-normal-prefix +general-local-leader
-             :states 'normal
-             :keymaps '(calendar-mode-map org-journal-mode-map)
+             :states '(normal visual)
+             :keymaps 'org-journal-mode-map
              "ojf" 'org-journal-next-entry
              "ojb" 'org-journal-previous-entry))
        #+end_src
