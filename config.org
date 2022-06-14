@@ -3287,9 +3287,15 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
         (global-set-key (kbd "C-c r i") 'org-roam-node-insert)
         (global-set-key (kbd "C-c r f") 'org-roam-node-find)
         (global-set-key (kbd "C-c r c") 'org-roam-capture)
+        (global-set-key (kbd "C-c r g") 'org-roam-graph)
+        (global-set-key (kbd "C-c r I") 'org-roam-update-org-id-locations)
         (global-set-key (kbd "C-c r b") 'org-roam-buffer-toggle)
         (global-set-key (kbd "C-c r B") 'org-roam-buffer-display-dedicated)
         (global-set-key (kbd "C-c r s") 'org-roam-db-sync)
+        (global-set-key (kbd "C-c r r") 'org-roam-refile)
+        (global-set-key (kbd "C-c r t") 'org-roam-tag-add)
+        (global-set-key (kbd "C-c r T") 'org-roam-tag-remove)
+        (global-set-key (kbd "C-c r u") 'org-roam-ui-open)
         (when (featurep 'consult-org-roam)
           (global-set-key (kbd "C-c r e") 'consult-org-roam-file-find)
           (global-set-key (kbd "C-c r x") 'consult-org-roam-backlinks)
@@ -3304,10 +3310,16 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
                :states '(normal visual)
                "or" '(:ignore t :which-key "Roam prefix")
                "ori" 'org-roam-node-insert
+               "orI" 'org-roam-update-org-id-locations
                "orf" 'org-roam-node-find
                "orc" 'org-roam-capture
                "orb" 'org-roam-buffer-toggle
                "orB" 'org-roam-buffer-display-dedicated
+               "org" 'org-roam-graph
+               "oru" 'org-roam-ui-open
+               "orr" 'org-roam-refile
+               "ort" 'org-roam-tag-add
+               "orT" 'org-roam-tag-remove
                "ors" 'org-roam-db-sync)))
          (with-eval-after-load 'consult-org-roam
            (progn
