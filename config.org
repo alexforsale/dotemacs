@@ -5824,6 +5824,15 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
       (add-hook 'diary-list-entries-hook 'diary-sort-entries t)
       (setq calendar-intermonth-spacing 1)
     #+end_src
+**** general keybinding
+     #+begin_src emacs-lisp
+       (with-eval-after-load 'config-general
+         (require 'general)
+         (+config/leader-def
+           :states '(normal visual)
+           "c" '(:ignore t :which-key "Calendar prefix")
+           "cc" 'calendar))
+     #+end_src
 *** calc file
     #+begin_src emacs-lisp
       (setq calc-settings-file (expand-file-name "calc-settings.el" +emacs-data-dir))
