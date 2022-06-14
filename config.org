@@ -3551,6 +3551,24 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
         ;; this messes up org-clock
         ;;(define-key org-journal-mode-map (kbd "C-x C-s") '+org-journal-save-entry-and-exit)
       #+end_src
+***** keybinding
+****** general
+       #+begin_src emacs-lisp
+         (with-eval-after-load 'config-general
+           (require 'general)
+           (+config/leader-def
+             :states '(normal visual)
+             "oj" '(:ignore t :which-key "Org-journal Prefix")
+             "ojs" 'org-journal-search
+             "ojj" 'org-journal-new-entry)
+           (general-define-key
+             :prefix +general-leader
+             :non-normal-prefix +general-local-leader
+             :states 'normal
+             :keymaps '(calendar-mode-map org-journal-mode-map)
+             "ojf" 'org-journal-next-entry
+             "ojb" 'org-journal-previous-entry))
+       #+end_src
 ***** Footer
       #+begin_src emacs-lisp
         (provide 'config-org-journal)
