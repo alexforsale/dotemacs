@@ -2583,6 +2583,11 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
          (customize-set-variable 'evil-want-keybinding nil)
          (customize-set-variable 'evil-want-integration t)
          (customize-set-variable 'evil-want-c-i-jump nil)
+         (customize-set-variable 'evil-ex-search-vim-style-regexp t)
+         (customize-set-variable 'evil-ex-visual-char-range t)
+         (customize-set-variable 'evil-symbol-word-search t)
+         (customize-set-variable 'evil-ex-interactive-search-highlight 'selected-window)
+         (customize-set-variable 'evil-kbd-macro-suppress-motion-error t)
        #+end_src
 ***** hooks
       #+begin_src emacs-lisp
