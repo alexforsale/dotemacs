@@ -2601,6 +2601,15 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
         (when (require 'evil-collection nil t)
           (evil-collection-init))
       #+end_src
+***** eldoc integration
+      #+begin_src emacs-lisp
+        (with-eval-after-load 'eldoc
+          (eldoc-add-command 'evil-normal-state
+                             'evil-insert
+                             'evil-change
+                             'evil-delete
+                             'evil-replace))
+      #+end_src
 ***** keybinding
 ****** general
 ******* window
