@@ -2660,6 +2660,11 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
          (with-eval-after-load 'evil-surround
            (evil-embrace-enable-evil-surround-integration))
        #+end_src
+***** evil-surround
+****** config
+       #+begin_src emacs-lisp
+         (global-evil-surround-mode 1)
+       #+end_src
 ***** keybinding
 ****** general
 ******* window
