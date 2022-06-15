@@ -1772,6 +1772,11 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
                      ((apply #'derived-mode-p global-hl-line-modes)))
                (hl-line-mode +1))))
     #+end_src
+*** don't treat single-quote as part of word
+    from [[https://stackoverflow.com/questions/10465695/how-can-i-get-emacs-to-recognize-single-quotes-as-not-being-string-begin-end-tok][stackoverflow]]
+    #+begin_src emacs-lisp
+      (modify-syntax-entry ?\' ".")
+    #+end_src
 *** paren
     #+begin_src emacs-lisp
       (eval-after-load 'paren
