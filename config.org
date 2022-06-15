@@ -2646,7 +2646,7 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
 ***** evil-embrace
 ****** variables
        #+begin_src emacs-lisp
-         (custom-set-variables 'evil-embrace-show-help-p nil)
+         (customize-set-variable 'evil-embrace-show-help-p nil)
        #+end_src
 ****** hooks
        #+begin_src emacs-lisp
