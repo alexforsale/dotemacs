@@ -2573,6 +2573,7 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
         (straight-use-package 'evil-collection)
         (straight-use-package 'evil-easymotion)
         (straight-use-package 'evil-embrace)
+        (straight-use-package 'evil-escape)
       #+end_src
 ***** variables
       This is what I've grown accustomed in /Emacs/.
@@ -2664,6 +2665,22 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
 ****** config
        #+begin_src emacs-lisp
          (global-evil-surround-mode 1)
+       #+end_src
+***** evil-escape
+****** variables
+       #+begin_src emacs-lisp
+         (customize-set-variable 'evil-escape-excluded-states '(normal visual multiedit emacs motion))
+         (customize-set-variable 'evil-escape-excluded-major-modes '(treemacs-mode vterm-mode))
+         (customize-set-variable 'evil-escape-key-sequence "jk")
+         (customize-set-variable 'evil-escape-delay 0.15)
+       #+end_src
+****** define evil key
+       #+begin_src emacs-lisp
+         (evil-define-key* '(insert replace visual operator) 'global "\C-g" #'evil-escape)
+       #+end_src
+****** enable evil-escape
+       #+begin_src emacs-lisp
+         (require 'evil-escape)
        #+end_src
 ***** keybinding
 ****** general
