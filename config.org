@@ -2671,10 +2671,14 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
         (require 'aggressive-indent)
         #+end_src
 ***** config
-      #+begin_src emacs-lisp
+      #+begin_src emacs-lisp :tangle no
         (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
         (add-hook 'css-mode-hook #'aggressive-indent-mode)
       #+end_src
+      In fact, just enable it globally, then add to =aggressive-indent-exclude-modes= if there's a mode to be excluded.
+      #+begin_src emacs-lisp
+        (global-aggressive-indent-mode 1)
+        #+end_src
 ***** Footer
       #+begin_src emacs-lisp
         (provide 'config-aggressive-indent-mode)
