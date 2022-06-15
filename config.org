@@ -2572,6 +2572,7 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
         (straight-use-package 'evil)
         (straight-use-package 'evil-collection)
         (straight-use-package 'evil-easymotion)
+        (straight-use-package 'evil-embrace)
       #+end_src
 ***** variables
       This is what I've grown accustomed in /Emacs/.
@@ -2640,6 +2641,24 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
          (evilem-make-motion evilem-motion-backward-WORD-begin #'evil-backward-WORD-begin :scope 'visible)
          (evilem-make-motion evilem-motion-backward-word-end #'evil-backward-word-end :scope 'visible)
          (evilem-make-motion evilem-motion-backward-WORD-end #'evil-backward-WORD-end :scope 'visible)
+       #+end_src
+***** evil-embrace
+****** variables
+       #+begin_src emacs-lisp
+         (custom-set-variables 'evil-embrace-show-help-p nil)
+       #+end_src
+****** hooks
+       #+begin_src emacs-lisp
+         (add-hook 'LaTex-mode-hook #'embrace-LaTex-mode-hook)
+         (add-hook 'org-mode-hook #'embrace-org-mode-hook)
+         (add-hook 'ruby-mode-hook #'embrace-ruby-mode-hook)
+         (add-hook 'emacs-lisp-mode-hook #'embrace-emacs-lisp-mode-hook)
+       #+end_src
+****** enable evil-embrace
+       #+begin_src emacs-lisp
+         (require 'evil-embrace)
+         (with-eval-after-load 'evil-surround
+           (evil-embrace-enable-evil-surround-integration))
        #+end_src
 ***** keybinding
 ****** general
