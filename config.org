@@ -3701,6 +3701,14 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
         ;; See `https://java281.dynv6.net/~alexforsale/posts/Emacs-Configuration.html'
         ;;; Code:
       #+end_src
+***** variables
+      #+begin_src emacs-lisp
+        (let ((chicken-executables
+               (cond ((string= "arch"
+                               (getenv "DISTRO"))
+                      "chicken-csc"))))
+          (customize-set-variable 'flycheck-scheme-chicken-executable chicken-executables))
+      #+end_src
 ***** package
       #+begin_src emacs-lisp
         (unless +config/is-guix-system
