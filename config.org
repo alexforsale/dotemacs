@@ -6023,6 +6023,10 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
                                          vc-ignore-dir-regexp
                                          tramp-file-name-regexp
                                          "[/\\\\]node_modules"))
+      (with-eval-after-load 'tramp
+        (setq tramp-remote-path
+              (append tramp-remote-path
+                      '(tramp-own-remote-path))))
     #+end_src
 *** =shadowfile=
     #+begin_src emacs-lisp
