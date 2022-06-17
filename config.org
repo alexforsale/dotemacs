@@ -5803,6 +5803,12 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
       #+begin_src emacs-lisp
         (straight-use-package 'devdocs)
       #+end_src
+***** variables
+      #+begin_src emacs-lisp
+        (customize-set-variable 'devdocs-data-dir (expand-file-name "devdocs/" +emacs-data-dir))
+        (unless (file-directory-p devdocs-data-dir)
+          (make-directory devdocs-data-dir t))
+      #+end_src
 ***** config
       #+begin_src emacs-lisp
         (require 'devdocs)
