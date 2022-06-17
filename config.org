@@ -3740,7 +3740,7 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
          (with-eval-after-load 'config-general
            (require 'general)
            (general-define-key
-            :keymap 'flycheck-error-list-mode-map
+            :keymaps 'flycheck-error-list-mode-map
             :states '(normal visual)
             "C-n" #'flycheck-error-list-next-error
             "C-p" #'flycheck-error-list-previous-error
