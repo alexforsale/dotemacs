@@ -5627,6 +5627,22 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
               (emms-notifications-dbus track-name))
              (t (emms-notifications-message track-name)))))
       #+end_src
+***** keybind
+****** general
+       from doom:
+       #+begin_src emacs-lisp
+         (with-eval-after-load 'config-general
+           (require 'general)
+           (general-define-key
+            :keymaps 'emms-playlist-mode-map
+            :states '(normal visual)
+            "l" #'emms-toggle-repeat-playlist
+            "p" #'emms-insert-playlist
+            "i" #'emms-insert-file
+            "t" #'emms-toggle-repeat-track
+            "s" #'emms-playlist-save
+            "m" #'emms-shuffle))
+       #+end_src
 ***** Footer
       #+begin_src emacs-lisp
         (provide 'config-emms)
