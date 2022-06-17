@@ -3710,6 +3710,10 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
                                (getenv "DISTRO"))
                       "chicken-csc"))))
           (customize-set-variable 'flycheck-scheme-chicken-executable chicken-executables))
+        (customize-set-variable 'flycheck-emacs-lisp-load-path 'inherit)
+        (delq 'new-line flycheck-check-syntax-automatically)
+        (customize-set-variable 'flycheck-buffer-switch-check-intermediate-buffers t)
+        (customize-set-variable 'flycheck-display-errors-delay 0.25)
       #+end_src
 ***** package
       #+begin_src emacs-lisp
