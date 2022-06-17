@@ -3734,6 +3734,21 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
                 :states '(normal visual)
                 "/ff" 'consult-flycheck))))
       #+end_src
+***** keybinding
+****** general
+       #+begin_src emacs-lisp
+         (with-eval-after-load 'config-general
+           (require 'general)
+           (general-define-key
+            :keymap 'flycheck-error-list-mode-map
+            :states '(normal visual)
+            "C-n" #'flycheck-error-list-next-error
+            "C-p" #'flycheck-error-list-previous-error
+            "j" #'flycheck-error-list-next-error
+            "k" #'flycheck-error-list-previous-error
+            "RET" #'flycheck-error-list-goto-error
+            [return] #'flycheck-error-list-goto-error))
+       #+end_src
 ***** Footer
       #+begin_src emacs-lisp
         (provide 'config-flycheck)
