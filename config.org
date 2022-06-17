@@ -155,6 +155,7 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
      ;; (require 'config-ripgrep)
      ;; (require 'config-restart-emacs)
      ;; (require 'config-hugo)
+     ;; (require 'config-devdocs)
    #+end_src
 ** Theme
    #+begin_src emacs-lisp
