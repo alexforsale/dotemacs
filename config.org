@@ -3711,7 +3711,8 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
                       "chicken-csc"))))
           (customize-set-variable 'flycheck-scheme-chicken-executable chicken-executables))
         (customize-set-variable 'flycheck-emacs-lisp-load-path 'inherit)
-        (delq 'new-line flycheck-check-syntax-automatically)
+        (with-eval-after-load 'flycheck
+          (delq 'new-line flycheck-check-syntax-automatically))
         (customize-set-variable 'flycheck-buffer-switch-check-intermediate-buffers t)
         (customize-set-variable 'flycheck-display-errors-delay 0.25)
       #+end_src
