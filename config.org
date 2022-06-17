@@ -5553,7 +5553,7 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
         ;;(when emms-librefm-scrobbler-password
         ;;  (emms-librefm-scrobbler-enable))
 
-        (when (not (directory-name-p emms-lyrics-dir))
+        (when (not (file-directory-p emms-lyrics-dir))
           (make-directory emms-lyrics-dir :parents))
       #+end_src
 ***** Lyrics-fetcher
@@ -5663,6 +5663,11 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
             "s" #'emms-playlist-save
             "m" #'emms-shuffle))
        #+end_src
+***** evil
+      #+begin_src emacs-lisp
+        (with-eval-after-load 'evil-collection
+          (evil-collection-emms-setup))
+      #+end_src
 ***** Footer
       #+begin_src emacs-lisp
         (provide 'config-emms)
