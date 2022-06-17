@@ -6092,7 +6092,13 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
         (setq image-dired-dir (expand-file-name "image-dired/" +emacs-data-dir))
         (setq image-dired-gallery-dir (expand-file-name "image-dired/gallery/" +emacs-data-dir))
         (setq image-dired-temp-image-file (expand-file-name "image-dired/temp-image" +emacs-data-dir))
-        (setq image-dired-temp-rotate-image-file (expand-file-name "image-dired/temp-rotate-image" +emacs-data-dir)))
+        (setq image-dired-temp-rotate-image-file (expand-file-name "image-dired/temp-rotate-image" +emacs-data-dir))
+        (setq dired-dwim-target t)
+        (setq dired-hide-details-hide-symlink-targets nil)
+        (setq dired-auto-revert-buffer #'dired-buffer-stale-p)
+        (setq dired-recursive-copies  'always)
+        (setq dired-recursive-deletes 'top)
+        (setq dired-create-destination-dirs 'ask))
       (add-hook 'dired-load-hook
                 (function (lambda () (load "dired-x"))))
     #+end_src
