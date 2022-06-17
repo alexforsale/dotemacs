@@ -2441,14 +2441,15 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
           "" '(nil :which-key "+config/leader-def root")
           "SPC" 'execute-extended-command
           ":" 'eval-expression
+          "a" '(:ignore t :which-key "Application Prefix")
           "b" '(:ignore t :which-key "Buffers Prefix")
           "f" '(:ignore t :which-key "Files Prefix")
           "F" '(:ignore t :which-key "Frames Prefix")
           "g" '(:ignore t :which-key ("G-key" . "Git Prefix"))
           "m" '(:ignore t :which-key "Mail Prefix")
           "o" '(:ignore t :which-key "Org-mode Prefix")
-          "s" '(:ignore t :which-key "Search prefix")
-          "t" '(:ignore t :which-key "Terminal prefix")
+          "s" '(:ignore t :which-key "Search Prefix")
+          "t" '(:ignore t :which-key "Terminal Prefix")
           "w" '(:ignore t :which-key "Window Prefix")
           "/" '(:ignore t :which-key "Navigation Prefix"))
       #+end_src
@@ -5783,6 +5784,46 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
       #+begin_src emacs-lisp
         (provide 'config-restart-emacs)
         ;;; config-restart-emacs.el ends here
+      #+end_src
+**** devdocs
+     :PROPERTIES:
+     :header-args: :tangle (expand-file-name "modules/config-devdocs.el" user-emacs-directory)
+     :END:
+***** header
+      #+begin_src emacs-lisp
+        ;;; config-devdocs.el --- Summary -*- lexical-binding: t -*-
+        ;;; Commentary:
+        ;; This file is auto-generated from `config.org'
+        ;; See `https://java281.dynv6.net/~alexforsale/posts/Emacs-Configuration.html'
+        ;;; Code:
+        (require 'config-defaults-variables)
+      #+end_src
+***** config
+      #+begin_src emacs-lisp
+        (require 'devdocs)
+      #+end_src
+***** keybinding
+      #+begin_src emacs-lisp
+        (with-eval-after-load 'config-general
+          (require 'general)
+          (general-define-key
+            :keymaps 'devdocs-mode-map
+            :states '(normal visual emacs)
+            "H" #'devdocs-go-back
+            "L" #'devdocs-go-forward
+            "o" #'devdocs-lookup
+            "[" #'devdocs-previous-page
+            "]" #'devdocs-next-page)
+          (+config/leader-def
+            :states '(normal visual)
+            "ad" '(:ignore t :which-key "DevDocs")
+            "adl" #'devdocs-lookup
+            "adi" #'devdocs-install))
+      #+end_src
+***** Footer
+      #+begin_src emacs-lisp
+        (provide 'config-devdocs)
+        ;;; config-devdocs.el ends here
       #+end_src
 **** hugo
      :PROPERTIES:
