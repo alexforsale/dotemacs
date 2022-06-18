@@ -2852,6 +2852,16 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
       (setq org-fontify-quote-and-verse-blocks t
             org-fontify-todo-headline t)
     #+end_src
+*** don't treat angled brackets as parentheses
+    from https://emacs.stackexchange.com/questions/50216/org-mode-code-block-parentheses-mismatch
+    #+begin_src emacs-lisp
+      (defun org-syntax-table-modify ()
+        "Modify `org-mode-syntax-table' for the current org buffer."
+        (modify-syntax-entry ?< "." org-mode-syntax-table)
+        (modify-syntax-entry ?> "." org-mode-syntax-table))
+
+      (add-hook 'org-mode-hook #'org-syntax-table-modify)
+    #+end_src
 *** footnote
     #+begin_src emacs-lisp
       (setq org-footnote-auto-adjust t)
