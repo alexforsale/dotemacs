@@ -405,7 +405,7 @@
     #+end_src
 *** hooks
     #+begin_src emacs-lisp
-    (add-hook 'after-init-hook 'doom-modeline-init)
+    (add-hook 'after-init-hook #'doom-modeline-mode)
     ;;(add-hook 'doom-modeline-mode-hook 'size-indication-mode-hook)
     ;;(add-hook 'doom-modeline-mode-hook 'column-number-mode-hook)
     #+end_src
