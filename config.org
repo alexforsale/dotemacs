@@ -427,6 +427,13 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
       (customize-set-variable 'scroll-margin 0)
       (customize-set-variable 'scroll-preserve-screen-position t)
     #+end_src
+*** enable visual-line-mode
+    #+begin_src emacs-lisp
+      (visual-line-mode 1)
+    #+end_src
+    When Visual Line mode is enabled, =word-wrap= is turned on in this buffer, and simple editing commands are redefined to act on visual lines, not logical lines.  See Info node (emacs)Visual Line Mode for details.
+
+Turning on this mode disables line truncation set up by variables =truncate-lines= and =truncate-partial-width-windows=.
 *** footer
     #+begin_src emacs-lisp
     (provide 'builtin-ui)
