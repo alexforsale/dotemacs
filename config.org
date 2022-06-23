@@ -3269,6 +3269,29 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
                     '(tramp-own-remote-path))))
      (setq tramp-default-method "ssh")
     #+end_src
+*** =dired=
+    #+begin_src emacs-lisp
+    (with-eval-after-load 'dired
+      (setq auto-revert-verbose t
+            auto-revert-use-notify nil
+            auto-revert-stop-on-user-input nil
+            revert-without-query (list ".")
+            image-dired-db-file (expand-file-name "image-dired/db.el" +emacs-data-dir)
+            image-dired-dir (expand-file-name "image-dired/" +emacs-data-dir)
+            image-dired-gallery-dir (expand-file-name "image-dired/gallery/" +emacs-data-dir)
+            image-dired-temp-image-file (expand-file-name "image-dired/temp-image" +emacs-data-dir)
+            image-dired-temp-rotate-image-file (expand-file-name "image-dired/temp-rotate-image" +emacs-data-dir)
+            dired-dwim-target t
+            dired-hide-details-hide-symlink-targets nil
+            dired-auto-revert-buffer #'dired-buffer-stale-p
+            dired-recursive-copies  'always
+            dired-recursive-deletes 'top
+            dired-create-destination-dirs 'ask))
+    (add-hook 'dired-load-hook
+              (function (lambda () (load "dired-x"))))
+
+    (customize-set-variable 'global-auto-revert-non-file-buffers t)
+    #+end_src
 *** footer
     #+begin_src emacs-lisp
     (provide 'builtin-tools)
