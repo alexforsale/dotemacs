@@ -1414,6 +1414,16 @@ Turning on this mode disables line truncation set up by variables =truncate-line
       (setq uniquify-buffer-name-style 'post-forward-angle-brackets))
     #+end_src
     with =post-forward-angle-brackets= means in the files =/foo/bar/mumble/name= and =/baz/quux/mumble/name= the names would be =name<bar/mumble>= and =name<quux/mumble>=. This is the default, I just got used to it.
+*** Offer to create parent directories if they do not exists, from [[http://iqbalansari.github.io/blog/2014/12/07/automatically-create-parent-directories-on-visiting-a-new-file-in-emacs/][iqbalansari.github.io]]
+    #+begin_src emacs-lisp
+      (defun +my-create-non-existent-directory ()
+        (let ((parent-directory (file-name-directory buffer-file-name)))
+          (when (and (not (file-exists-p parent-directory))
+                     (y-or-n-p (format "Directory `%s' does not exist! Create it?" parent-directory)))
+            (make-directory parent-directory t))))
+
+      (add-to-list 'find-file-not-found-functions '+my-create-non-existent-directory)
+    #+end_src
 *** footer
     #+begin_src emacs-lisp
     (provide 'builtin-editor)
