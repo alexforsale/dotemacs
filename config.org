@@ -3331,6 +3331,27 @@ Turning on this mode disables line truncation set up by variables =truncate-line
     ;;; Commentary:
     ;;; Code:
     #+end_src
+*** quicklisp
+    Quicklisp is a library manager for Common Lisp. It works with your existing Common Lisp implementation to download, install, and load any of over 1,500 libraries with a few simple commands[fn:3].
+    #+begin_src emacs-lisp
+    ;; quicklisp
+    (if (file-directory-p
+         (expand-file-name
+          ".ros/lisp/quicklisp"
+          (getenv "HOME")))
+        (defvar +quicklisp-path
+          (expand-file-name
+           ".ros/lisp/quicklisp"
+           (getenv "HOME")))
+      (when (file-directory-p
+             (expand-file-name
+              ".local/share/quicklisp"
+              (getenv "HOME")))
+        (defvar +quicklisp-path
+          (expand-file-name
+           ".local/share/quicklisp"
+           (getenv "HOME")))))
+    #+end_src
 *** =tramp=
     #+begin_src emacs-lisp
     (with-eval-after-load 'tramp
@@ -5478,6 +5499,8 @@ Turning on this mode disables line truncation set up by variables =truncate-line
 * local-variables
 
 * Footnotes
+
+[fn:3] https://www.quicklisp.org/beta/
 [fn:2] https://www.emacswiki.org/emacs/GccEmacs
 
 [fn:1] https://www.gnu.org/software/emacs/manual/html_node/emacs/Early-Init-File.html
