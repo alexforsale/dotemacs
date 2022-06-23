@@ -222,7 +222,7 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
   ;;; Commentary:
   ;;; Code:
   #+end_src
-  This file is loaded before the package system and GUI is initialized.
+  This file is loaded before the package system and GUI is initialized[fn:1].
 ** Set =+emacs-data-dir= variables.
    #+begin_src emacs-lisp
    (defvar +emacs-data-dir
@@ -233,15 +233,19 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
    #+end_src
    This will set the variable ==+emacs-data-dir= to =~/.local/share/emacs=.
 ** Increase the GC threshold for faster startup
-   The default is 800 kilobytes, measured in bytes.
+   The default is 800 kilobytes, measured in bytes. I'm not sure this affect much if we only start /Emacs/ once for the server.
    #+begin_src emacs-lisp
    (setq gc-cons-threshold (* 50 1000 1000))
    #+end_src
 ** Prefer loading newest compiled .el files
+   This applies when a filename suffix is not explicitly specified and load is trying various possible suffixes (see load-suffixes and load-file-rep-suffixes). Normally, it stops at the first file that exists unless you explicitly specify one or the other. If this option is non-nil, it checks all suffixes and uses whichever file is newest.
+
+   Note that if you customize this, obviously it will not affect files that are loaded before your customizations are read!
    #+begin_src emacs-lisp
    (customize-set-variable 'load-prefer-newer noninteractive)
    #+end_src
 ** Native compilation settings.
+   This only applies to /Emacs/ built with =libgccjit=[fn:2]. Last time I used it doesn't work well in /exwm/.
    #+begin_src emacs-lisp
    (when (featurep 'native-compile)
      ;; Silence compiler warnings as they can be pretty disruptive
@@ -254,10 +258,12 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
      (add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" +emacs-data-dir)))
    #+end_src
 ** Don't use =package.el=, we'll use =straight.el= instead
+   More about [[https://github.com/radian-software/straight.el][straight.el]]
    #+begin_src emacs-lisp
    (setq package-enable-at-startup nil)
    #+end_src
 ** Remove some unneeded UI elements.
+   I think this is from /rational-emacs/.
    #+begin_src emacs-lisp
    (setq inhibit-startup-message t)
    (push '(tool-bar-lines . 0) default-frame-alist)
@@ -269,6 +275,7 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
    #+end_src
    This also sets the initial /minimal theme/ to avoid having the vanilla theme.
 ** Set location for /straight-base-dir/, must be set before straight.el initialized.
+   Ideally I should separate the repositories for each flavor (/doom/,/spacemacs/ etc.), but I sometimes want to quickly test a minimal configuration with /straight/ without re-/cloning/ each repo.
    #+begin_src emacs-lisp
    (customize-set-variable 'straight-base-dir +emacs-data-dir)
    #+end_src
@@ -5340,6 +5347,11 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
     #+end_src
 
 * local-variables
+
+* Footnotes
+[fn:2] https://www.emacswiki.org/emacs/GccEmacs
+
+[fn:1] https://www.gnu.org/software/emacs/manual/html_node/emacs/Early-Init-File.html
   # Local Variables:
   # eval: (add-hook 'after-save-hook (lambda ()(if (y-or-n-p "Tangle?")(org-babel-tangle))) nil t)
   # End:
