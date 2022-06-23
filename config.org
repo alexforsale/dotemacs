@@ -3428,6 +3428,14 @@ Turning on this mode disables line truncation set up by variables =truncate-line
     #+begin_src emacs-lisp
       (setq browse-url-generic-program "xdg-open")
     #+end_src
+*** calendar and diary
+    #+begin_src emacs-lisp
+    (with-eval-after-load 'calendar
+      (setq diary-file "~/Documents/google-drive/Notes/diary")
+      (add-hook 'diary-list-entries-hook 'diary-sort-entries t)
+      (setq calendar-intermonth-spacing 1))
+    #+end_src
+    Hardcoded atm.
 *** footer
     #+begin_src emacs-lisp
     (provide 'builtin-tools)
