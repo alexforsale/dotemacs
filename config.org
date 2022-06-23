@@ -4820,6 +4820,11 @@ Turning on this mode disables line truncation set up by variables =truncate-line
     ;;; Commentary:
     ;;; Code:
     #+end_src
+*** common
+    #+begin_src emacs-lisp
+    (customize-set-variable 'xterm-set-window-title t)
+    #+end_src
+    Whether Emacs should set window titles to an /Emacs/ frame in an /XTerm/.
 *** eshell
     #+begin_src emacs-lisp
     (with-eval-after-load 'eshell
