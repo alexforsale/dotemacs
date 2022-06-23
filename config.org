@@ -1404,6 +1404,10 @@ Turning on this mode disables line truncation set up by variables =truncate-line
     #+begin_src emacs-lisp
       (setq enable-recursive-minibuffers t)
     #+end_src
+*** Always require final newline
+    #+begin_src emacs-lisp
+      (setq require-final-newline t)
+    #+end_src
 *** footer
     #+begin_src emacs-lisp
     (provide 'builtin-editor)
