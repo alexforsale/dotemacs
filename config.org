@@ -406,7 +406,19 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
     ;;; Commentary:
     ;;; Code:
     #+end_src
-
+**** Default fonts
+     Got this from [[https://emacsredux.com/blog/2021/12/22/check-if-a-font-is-available-with-emacs-lisp/][emacsredux]]:
+     #+begin_src emacs-lisp
+       (cond
+        ((find-font (font-spec :name "Source Code Pro"))
+         (set-frame-font "Source Code Pro-10"))
+        ((find-font (font-spec :name "Fira Code"))
+         (set-frame-font "Fire Code-10"))
+        ((find-font (font-spec :name "DejaVu Sans Mono"))
+         (set-frame-font "DejaVu Sans Mono-10"))
+        ((find-font (font-spec :name "Ubuntu Mono"))
+         (set-frame-font "Ubuntu Mono-12")))
+     #+end_src
 *** footer
     #+begin_src emacs-lisp
     (provide 'builtin-ui)
