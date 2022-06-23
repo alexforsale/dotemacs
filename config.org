@@ -3254,20 +3254,23 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
     #+end_src
 *** =tramp=
     #+begin_src emacs-lisp
-    (setq tramp-auto-save-directory (expand-file-name "tramp/auto-save/" +emacs-data-dir))
-    (setq tramp-persistency-file-name (expand-file-name "tramp/persistency.el" +emacs-data-dir))
-    (setq remote-file-name-inhibit-cache 60
-          tramp-completion-reread-directory-timeout 60
-          tramp-verbose 1
-          vc-ignore-dir-regexp (format "%s\\|%s\\|%s"
-                                       vc-ignore-dir-regexp
-                                       tramp-file-name-regexp
-                                       "[/\\\\]node_modules"))
     (with-eval-after-load 'tramp
       (setq tramp-remote-path
             (append tramp-remote-path
-                    '(tramp-own-remote-path))))
-     (setq tramp-default-method "ssh")
+                    '(tramp-own-remote-path))
+            tramp-auto-save-directory
+            (expand-file-name "tramp/auto-save/" +emacs-data-dir)
+            tramp-default-method "ssh"
+            tramp-persistency-file-name
+            (expand-file-name "tramp/persistency.el" +emacs-data-dir)
+            remote-file-name-inhibit-cache 60
+            tramp-completion-reread-directory-timeout 60
+            tramp-verbose 1
+            vc-ignore-dir-regexp
+            (format "%s\\|%s\\|%s"
+                    vc-ignore-dir-regexp
+                    tramp-file-name-regexp
+                    "[/\\\\]node_modules")))
     #+end_src
 *** =dired=
     #+begin_src emacs-lisp
