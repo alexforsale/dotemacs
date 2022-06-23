@@ -298,7 +298,9 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
    #+begin_src emacs-lisp
    (add-to-list 'load-path (expand-file-name "modules/" user-emacs-directory))
    #+end_src
+   This way we can load them individually.
 ** User site-lisp directory
+   In case I wanted to add some files that's should not be included in the git repo.
    #+begin_src emacs-lisp
    (defvar +site-lisp-dir
      (expand-file-name "site-lisp" user-emacs-directory)
@@ -313,7 +315,17 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
    #+begin_src emacs-lisp
    (set-default-coding-systems 'utf-8)
    #+end_src
+   This sets the following coding systems:
+   - coding system of a newly created buffer
+   - default coding system for subprocess I/O
+   This also sets the following values:
+   - default value used as =file-name-coding-system= for converting file names
+     if CODING-SYSTEM is ASCII-compatible
+   - default value for the =command set-terminal-coding-system=
+   - default value for the command ==set-keyboard-coding-system=
+     if CODING-SYSTEM is ASCII-compatible
 ** Increase large file warning size to around 100MB.
+   Maximum size of file above which a confirmation is requested.
    #+begin_src emacs-lisp
    (customize-set-variable 'large-file-warning-threshold 100000000)
    #+end_src
