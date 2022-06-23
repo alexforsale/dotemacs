@@ -434,6 +434,11 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
     When Visual Line mode is enabled, =word-wrap= is turned on in this buffer, and simple editing commands are redefined to act on visual lines, not logical lines.  See Info node (emacs)Visual Line Mode for details.
 
 Turning on this mode disables line truncation set up by variables =truncate-lines= and =truncate-partial-width-windows=.
+*** move point to help window
+    When set (non-nil) the point will select automatically to the help-window, I found this quite distracting so I set this to the default.
+    #+begin_src emacs-lisp
+      (setq help-window-select nil)
+    #+end_src
 *** footer
     #+begin_src emacs-lisp
     (provide 'builtin-ui)
