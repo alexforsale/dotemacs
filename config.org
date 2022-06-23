@@ -188,6 +188,10 @@
    #+begin_src emacs-lisp
    (require 'builtin-org)
    (require 'builtin-editor)
+   (require 'builtin-tools)
+   (require 'builtin-ui)
+   (require 'builtin-email)
+   (require 'builtin-shell)
    #+end_src
 ** footer
    #+begin_src emacs-lisp
@@ -359,6 +363,22 @@
    #+end_src
 
 * UI
+** builtins
+   :PROPERTIES:
+   :header-args: :tangle (expand-file-name "modules/builtin-ui.el" user-emacs-directory)
+   :END:
+*** header
+    #+begin_src emacs-lisp
+    ;;; config-builtin-editor.el --- Summary -*- lexical-binding: t -*-
+    ;;; Commentary:
+    ;;; Code:
+    #+end_src
+
+*** footer
+    #+begin_src emacs-lisp
+    (provide 'builtin-ui)
+    ;;; builtin-ui.el ends here
+    #+end_src
 ** all-the-icons
    :PROPERTIES:
    :header-args: :tangle (expand-file-name "modules/config-all-the-icons.el" user-emacs-directory) :mkdirp t
@@ -4367,6 +4387,21 @@
     ;;; config-guix.el ends here
     #+end_src
 * email
+** builtins
+   :PROPERTIES:
+   :header-args: :tangle (expand-file-name "modules/builtin-email.el" user-emacs-directory)
+   :END:
+*** header
+    #+begin_src emacs-lisp
+    ;;; config-builtin-email.el --- Summary -*- lexical-binding: t -*-
+    ;;; Commentary:
+    ;;; Code:
+    #+end_src
+*** footer
+    #+begin_src emacs-lisp
+    (provide 'builtin-email)
+    ;;; builtin-email.el ends here
+    #+end_src
 ** notmuch
    :PROPERTIES:
    :header-args: :tangle (expand-file-name "modules/config-notmuch.el" user-emacs-directory)
@@ -4557,6 +4592,22 @@
     ;;; config-gnus-alias.el ends here
     #+end_src
 * shells
+** builtins
+   :PROPERTIES:
+   :header-args: :tangle (expand-file-name "modules/builtin-shell.el" user-emacs-directory)
+   :END:
+*** header
+    #+begin_src emacs-lisp
+    ;;; config-builtin-shell.el --- Summary -*- lexical-binding: t -*-
+    ;;; Commentary:
+    ;;; Code:
+    #+end_src
+*** footer
+    #+begin_src emacs-lisp
+    (provide 'builtin-shell)
+    ;;; builtin-shell.el ends here
+    #+end_src
+
 ** vterm
    :PROPERTIES:
    :header-args: :tangle (expand-file-name "modules/config-vterm.el" user-emacs-directory)
