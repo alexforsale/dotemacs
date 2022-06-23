@@ -3424,6 +3424,10 @@ Turning on this mode disables line truncation set up by variables =truncate-line
             desktop-path
             (list desktop-dirname)))
     #+end_src
+*** use /xdg-open/ for browsing
+    #+begin_src emacs-lisp
+      (setq browse-url-generic-program "xdg-open")
+    #+end_src
 *** footer
     #+begin_src emacs-lisp
     (provide 'builtin-tools)
