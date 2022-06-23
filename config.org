@@ -1434,6 +1434,13 @@ Turning on this mode disables line truncation set up by variables =truncate-line
 
       (add-to-list 'find-file-not-found-functions '+my-create-non-existent-directory)
     #+end_src
+*** eldoc
+    #+begin_src emacs-lisp
+      (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
+      (add-hook 'lisp-interaction-mode-hook 'eldoc-mode)
+      (add-hook 'ielm-mode-hook 'eldoc-mode)
+      (add-hook 'prog-mode-hook 'eldoc-mode)
+    #+end_src
 *** footer
     #+begin_src emacs-lisp
     (provide 'builtin-editor)
