@@ -3451,6 +3451,13 @@ Turning on this mode disables line truncation set up by variables =truncate-line
         (setq url-cookie-file (expand-file-name "url/cookies.el" +emacs-data-dir))
         (setq url-history-file (expand-file-name "url/history.el" +emacs-data-dir)))
     #+end_src
+*** epg
+    Some distro doesn't use the binary name =gpg2=.
+    #+begin_src emacs-lisp
+    (if (executable-find "gpg2")
+        (customize-set-variable 'epg-gpg-program "gpg2")
+      (customize-set-variable 'epg-gpg-program "gpg"))
+    #+end_src
 *** footer
     #+begin_src emacs-lisp
     (provide 'builtin-tools)
