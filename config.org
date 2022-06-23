@@ -1399,6 +1399,11 @@ Turning on this mode disables line truncation set up by variables =truncate-line
     #+begin_src emacs-lisp
       (setq vc-follow-symlinks t)
     #+end_src
+*** Enable recursive minibuffers
+    Non-nil means to allow minibuffer commands while in the minibuffer.
+    #+begin_src emacs-lisp
+      (setq enable-recursive-minibuffers t)
+    #+end_src
 *** footer
     #+begin_src emacs-lisp
     (provide 'builtin-editor)
