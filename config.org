@@ -663,7 +663,8 @@
      #+end_src
 *** hooks
     #+begin_src emacs-lisp
-    (unless (string= "exwm" (getenv "DESKTOP_SESSION"))
+    (unless (or (string= "exwm" (getenv "DESKTOP_SESSION"))
+                (getenv "GUIX_LOCPATH"))
       (add-hook 'emacs-startup-hook (lambda () (persp-state-load persp-state-default-file)))
       (add-hook 'kill-emacs-hook #'persp-state-save))
     #+end_src
