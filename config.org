@@ -4820,6 +4820,13 @@ Turning on this mode disables line truncation set up by variables =truncate-line
     ;;; Commentary:
     ;;; Code:
     #+end_src
+*** eshell
+    #+begin_src emacs-lisp
+    (with-eval-after-load 'eshell
+      (make-directory (expand-file-name "eshell/" +emacs-data-dir) t))
+    (setq eshell-aliases-file (expand-file-name "eshell/aliases" +emacs-data-dir))
+    (setq eshell-directory-name (expand-file-name "eshell/" +emacs-data-dir))
+    #+end_src
 *** footer
     #+begin_src emacs-lisp
     (provide 'builtin-shell)
