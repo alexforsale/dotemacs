@@ -444,6 +444,10 @@ Turning on this mode disables line truncation set up by variables =truncate-line
       (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
       (add-to-list 'default-frame-alist '(fullscreen . maximized))
     #+end_src
+*** Show empty lines after buffer end
+    #+begin_src emacs-lisp
+      (set-default 'indicate-empty-lines t)
+    #+end_src
 *** footer
     #+begin_src emacs-lisp
     (provide 'builtin-ui)
