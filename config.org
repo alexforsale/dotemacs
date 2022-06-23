@@ -3352,6 +3352,27 @@ Turning on this mode disables line truncation set up by variables =truncate-line
            ".local/share/quicklisp"
            (getenv "HOME")))))
     #+end_src
+*** ros
+    Roswell is a Lisp implementation installer/manager, launcher, and much more! It started as a command-line tool with the aim to make installing and managing Common Lisp implementations really simple and easy[fn:4].
+    #+begin_src emacs-lisp
+    (cond
+     ((and (executable-find "ros")
+           (file-exists-p
+            (expand-file-name
+             ".roswell/helper.el"
+             (getenv "HOME"))))
+      (progn
+        (load
+         (expand-file-name
+          ".roswell/helper.el"
+          (getenv "HOME")))
+        (setq inferior-lisp-program "ros -Q -l ~/.sbclrc run")))
+     ((executable-find "sbcl")
+      (setq inferior-lisp-program "sbcl")))
+    ;; (setq max-lisp-eval-depth 32000
+    ;;       max-specpdl-size 32000)
+    #+end_src
+    Both /ros/ and /quicklisp/ are not actually built-in tools, but since it's not managed directly inside /Emacs/, I put them here.
 *** =tramp=
     #+begin_src emacs-lisp
     (with-eval-after-load 'tramp
@@ -5499,6 +5520,7 @@ Turning on this mode disables line truncation set up by variables =truncate-line
 * local-variables
 
 * Footnotes
+[fn:4] https://roswell.github.io/
 
 [fn:3] https://www.quicklisp.org/beta/
 [fn:2] https://www.emacswiki.org/emacs/GccEmacs
