@@ -3416,6 +3416,14 @@ Turning on this mode disables line truncation set up by variables =truncate-line
 
     (customize-set-variable 'global-auto-revert-non-file-buffers t)
     #+end_src
+*** =desktop-save-mode=
+    #+begin_src emacs-lisp
+    (with-eval-after-load 'desktop
+      (make-directory (expand-file-name "desktop/" +emacs-data-dir) t)
+      (setq desktop-dirname (expand-file-name "desktop/" +emacs-data-dir)
+            desktop-path
+            (list desktop-dirname)))
+    #+end_src
 *** footer
     #+begin_src emacs-lisp
     (provide 'builtin-tools)
