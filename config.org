@@ -3442,6 +3442,15 @@ Turning on this mode disables line truncation set up by variables =truncate-line
       (make-directory (expand-file-name "eww/" +emacs-data-dir) t)
       (setq eww-bookmarks-directory (expand-file-name "eww/" +emacs-data-dir)))
     #+end_src
+*** =url=
+    I'm not sure if this is used along side /eww/.
+    #+begin_src emacs-lisp
+      (with-eval-after-load 'url
+        (setq url-cache-directory (expand-file-name "url/cache/" +emacs-data-dir))
+        (setq url-configuration-directory (expand-file-name "url/" +emacs-data-dir))
+        (setq url-cookie-file (expand-file-name "url/cookies.el" +emacs-data-dir))
+        (setq url-history-file (expand-file-name "url/history.el" +emacs-data-dir)))
+    #+end_src
 *** footer
     #+begin_src emacs-lisp
     (provide 'builtin-tools)
