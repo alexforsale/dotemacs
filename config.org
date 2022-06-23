@@ -139,6 +139,7 @@
    ;; (require 'config-restart-emacs)
    ;; (require 'config-hugo)
    ;; (require 'config-devdocs)
+   ;; (require 'config-guix)
    #+end_src
 ** Theme
    #+begin_src emacs-lisp
@@ -4345,6 +4346,25 @@
     #+begin_src emacs-lisp
     (provide 'config-hugo)
     ;;; config-hugo.el ends here
+    #+end_src
+** guix
+   :PROPERTIES:
+   :header-args: :tangle (expand-file-name "modules/config-guix.el" user-emacs-directory)
+   :END:
+*** header
+    #+begin_src emacs-lisp
+    ;;; config-guix.el --- Summary -*- lexical-binding: t -*-
+    ;;; Commentary:
+    ;;; Code:
+    #+end_src
+*** package
+    #+begin_src emacs-lisp
+    (straight-use-package 'guix)
+    #+end_src
+*** Footer
+    #+begin_src emacs-lisp
+    (provide 'config-guix)
+    ;;; config-guix.el ends here
     #+end_src
 * email
 ** notmuch
