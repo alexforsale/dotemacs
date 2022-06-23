@@ -2765,13 +2765,19 @@
     #+end_src
 *** package
     #+begin_src emacs-lisp
-    (straight-use-package 'org-roam)
+    (if (or (getenv "GUIX_LOCPATH")
+            (string= "exwm" (getenv "DESKTOP_SESSION")))
+        (progn
+          (straight-use-package '(org-roam :type built-in))
+          (straight-use-package '(emacsql :type built-in))
+          (straight-use-package '(emacsql-sqlite :type built-in)))
+      (straight-use-package 'org-roam))
     (straight-use-package 'org-roam-ui)
     (when (featurep 'consult)
       (straight-use-package
        '(consult-org-roam :type git
-			  :host github
-			  :repo "jgru/consult-org-roam"))
+                          :host github
+                          :repo "jgru/consult-org-roam"))
       (require 'consult-org-roam))
     #+end_src
 *** for freebsd
@@ -4620,12 +4626,15 @@
    ;;; Code:
    #+end_src
    #+begin_src emacs-lisp
-   (straight-use-package 'vterm)
+   (if (or (getenv "GUIX_LOCPATH")
+           (string= "exwm" (getenv "DESKTOP_SESSION")))
+       (straight-use-package '(vterm :type built-in))
+     (straight-use-package 'vterm))
    (require 'vterm)
    (global-set-key (kbd "C-c t t") 'vterm)
    (setq vterm-max-scrollback 5000)
    (add-hook 'vterm-mode-hook (lambda () (setq confirm-kill-processes nil
-					       hscroll-margin 0)))
+                                               hscroll-margin 0)))
    (setq vterm-kill-buffer-on-exit t)
    #+end_src
 *** general
