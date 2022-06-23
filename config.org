@@ -448,6 +448,16 @@ Turning on this mode disables line truncation set up by variables =truncate-line
     #+begin_src emacs-lisp
       (set-default 'indicate-empty-lines t)
     #+end_src
+*** add visual pulse when changing focus, like beacon but built-in, from [[https://karthinks.com/software/batteries-included-with-emacs/][karthinks.com]].
+    #+begin_src emacs-lisp
+      (defun +pulse-line (&rest _)
+        "Pulse the current line."
+        (pulse-momentary-highlight-one-line (point)))
+
+      (dolist (command '(scroll-up-command scroll-down-command
+                                           recenter-top-bottom other-window))
+        (advice-add command :after #'+pulse-line))
+    #+end_src
 *** footer
     #+begin_src emacs-lisp
     (provide 'builtin-ui)
