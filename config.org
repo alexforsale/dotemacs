@@ -1,4 +1,18 @@
+#+title: Emacs Configuration
+#+date: <2022-02-20 Sun>
+#+author: Kristian Alexander P
+#+email: alexforsale@yahoo.com
+#+language: en
 #+startup: overview
+#+options: d:t toc:t
+
+This configuration was inspired by the [[https://github.com/SystemCrafters/rational-emacs][rational-emacs configuration]] from the [[https://www.youtube.com/c/SystemCrafters/videos][systemcrafters series]]. So instead of blindly copying every snippets of /Emacs/ configuration I've found on the internet, I'm taking the lighter approach and *try* to only use what is necessary.
+
+With that in mind, I'm breaking down this configuration into separate /pluggable/ files that can be /included/ on demand. But the general goal is to only use what's already built-in to /Emacs/ as much as possible. Just like many other /dotfiles/ I've used so far, this configuration will be generated from a single /org-mode/ file (the one you're reading right now).
+
+By default this will creates an =emacs= directory insinde =~/.config= or wherever the =${XDG_CONFIG_HOME}= is set. If you're using [[https://github.com/plexus/chemacs2][chemacs]], or if you want to use the standard =~/.emacs.d= directory, modify the =:tangle= directive inside each heading's =:PROPERTIES:=.
+
+To easily toggle the additional packages, create a =config-user.el= file inside =user-emacs-directory=, usually =~/.config/emacs=. This file also generate =~/.config/emacs/config-user.el.example=:
 
 * Example =config-user.el=
   :PROPERTIES:
