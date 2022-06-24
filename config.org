@@ -2913,6 +2913,21 @@ Turning on this mode disables line truncation set up by variables =truncate-line
       (global-set-key (kbd "C-c a") 'org-agenda)
       (global-set-key (kbd "C-c c") 'org-capture)
     #+end_src
+*** UI
+**** hide leading stars
+     #+begin_src emacs-lisp
+     (setq org-hide-leading-stars t)
+     #+end_src
+**** fontify
+     #+begin_src emacs-lisp
+     (setq org-fontify-quote-and-verse-blocks t
+           org-fontify-todo-headline t)
+     #+end_src
+**** don't hide emphasis-marker
+     It's kinda ugly but makes editing easy.
+     #+begin_src emacs-lisp
+     (setq org-hide-emphasis-markers nil)
+     #+end_src
 *** footer
     #+begin_src emacs-lisp
     (provide 'builtin-org)
