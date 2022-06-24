@@ -1036,34 +1036,36 @@ Turning on this mode disables line truncation set up by variables =truncate-line
     #+begin_src emacs-lisp
     (progn
       (with-eval-after-load 'rainbow-mode
-	(diminish 'rainbow-mode))
+        (diminish 'rainbow-mode))
       (diminish 'text-scale-mode)
       (with-eval-after-load 'eldoc
-	(diminish 'eldoc-mode))
+        (diminish 'eldoc-mode))
       (with-eval-after-load 'subword
-	(diminish 'subword-mode))
+        (diminish 'subword-mode))
       (with-eval-after-load 'flycheck
-	(diminish 'flycheck-mode))
+        (diminish 'flycheck-mode))
       (with-eval-after-load 'projectile
-	(diminish 'projectile-mode))
+        (diminish 'projectile-mode))
       (with-eval-after-load 'yasnippet
-	(diminish 'yas-global-mode)
-	(diminish 'yas-extra-mode)
-	(diminish 'yas-minor-mode))
+        (diminish 'yas-global-mode)
+        (diminish 'yas-extra-mode)
+        (diminish 'yas-minor-mode))
       (with-eval-after-load 'which-key
-	(diminish 'which-key-mode))
+        (diminish 'which-key-mode))
       (with-eval-after-load 'desktop-environment
-	(diminish 'desktop-environment-mode))
+        (diminish 'desktop-environment-mode))
       (with-eval-after-load 'paredit
-	(diminish 'paredit-mode))
+        (diminish 'paredit-mode))
       (with-eval-after-load 'theme-magic
-	(diminish 'theme-magic-export-theme-mode))
+        (diminish 'theme-magic-export-theme-mode))
       (with-eval-after-load 'git-gutter
-	(diminish 'git-gutter-mode))
+        (diminish 'git-gutter-mode))
       (with-eval-after-load 'smartparens
-	(diminish 'smartparens-mode))
+        (diminish 'smartparens-mode))
+      (with-eval-after-load 'evil-org
+        (diminish 'evil-org-mode))
       (with-eval-after-load 'evil-collection-unimpaired
-	(diminish 'evil-collection-unimpaired-mode)))
+        (diminish 'evil-collection-unimpaired-mode)))
     #+end_src
 *** Footer
     #+begin_src emacs-lisp
