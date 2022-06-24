@@ -575,6 +575,7 @@ Turning on this mode disables line truncation set up by variables =truncate-line
     ;;; Code:
     #+end_src
 *** package
+    This package needs =wal= executables, so don't load it if it doesn't available.
     #+begin_src emacs-lisp
     (straight-use-package 'theme-magic)
     (when (executable-find "wal")
