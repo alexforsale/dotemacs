@@ -749,7 +749,7 @@ Turning on this mode disables line truncation set up by variables =truncate-line
     #+begin_src emacs-lisp
     (setq persp-initial-frame-name "Main")
     (setq persp-state-default-file (expand-file-name "statesave" +emacs-data-dir))
-    (customize-set-variable 'persp-mode-prefix-key (kbd "C-c b"))
+    (customize-set-variable 'persp-mode-prefix-key (kbd "C-c TAB"))
     #+end_src
 *** config
     #+begin_src emacs-lisp
@@ -760,7 +760,7 @@ Turning on this mode disables line truncation set up by variables =truncate-line
     #+begin_src emacs-lisp
     (with-eval-after-load 'perspective
       (global-set-key [remap switch-to-buffer] #'persp-switch-to-buffer*)
-      (define-key persp-mode-map (kbd "C-c b TAB") 'persp-switch-last))
+      (define-key persp-mode-map (kbd "C-c TAB TAB") 'persp-switch-last))
     #+end_src
 **** general
      #+begin_src emacs-lisp
