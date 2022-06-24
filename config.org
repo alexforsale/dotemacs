@@ -2701,43 +2701,100 @@ Turning on this mode disables line truncation set up by variables =truncate-line
 *** org-agenda
     #+begin_src emacs-lisp
     (setq org-agenda-files (list org-directory)
-	  org-agenda-span 'day
-	  org-agenda-window-setup (quote current-window)
-	  org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled
-	  org-agenda-include-diary t
-	  org-agenda-custom-commands
-	  `(("d" "Dashboard"
-	     ((agenda "" ((org-deadline-warning-days 3)))
-	      (tags-todo "+habit+TODO=\"TODO\"" ((org-agenda-overriding-header "Routine")))
-	      (tags-todo "{project*}-TODO=\"DONE\"-TODO=\"SOMEDAY\"-TODO=\"LEARN\""
-			 ((org-agenda-overriding-header "Projects:")))
-	      (tags-todo "+followup" ((org-agenda-overriding-header "Needs Follow Up")))
-	      (tags "+TODO=\"NEXT\"+learning+" ((org-agenda-overriding-header "Learning:")))
-	      (alltodo ""
-		       ((org-agenda-overriding-header "Inbox")))
-	      (tags-todo "TODO=\"TODO\"-project-reading-errands-video"
-			 ((org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
-			  (org-agenda-skip-function
-			   `(org-agenda-skip-entry-if
-			     'notregexp ,(format "\\[#%s\\]" (char-to-string org-priority-highest))))
-			  (org-agenda-prefix-format "%-6e ")
-			  (org-agenda-max-entries nil)
-			  (org-agenda-overriding-header "Unscheduled TODO entries: ")
-			  (org-agenda-sorting-strategy '(priority-down effort-up tag-up category-keep))))))))
+          ;;org-agenda-span 'day
+          org-agenda-window-setup (quote current-window)
+          org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled
+          org-agenda-include-diary t)
     #+end_src
+**** org-agenda-custom-commands
+     This is the minimal =org-agenda-custom-commands=, if needed, additional commands should be added with =add-to-list= function.
+***** day view
+      Daily view should only includes entries with urgency, the first step is to identify each task priorities or types (work, personal, or projects).
+      #+begin_src emacs-lisp
+      (setq org-agenda-custom-commands
+      ;; use `d' prefix to avoid conflict with existing keys
+            `(("dd" "Daily Dashboard"
+               (;; Important
+                (tags-todo "*"
+                           ((org-agenda-skip-if nil '(timestamp))
+                            (org-agenda-block-separator nil)
+                            (org-agenda-skip-function
+                             `(org-agenda-skip-entry-if
+                               'notregexp ,(format "\\[#%s\\]" (char-to-string org-priority-highest))))
+                            (org-agenda-overriding-header "Important Entries\n")))
+                ;; Agenda
+                (agenda ""
+                        ((org-agenda-span 'day)
+                         (org-deadline-warning-days 0)
+                         (org-agenda-block-separator nil)
+                         (org-agenda-day-face-function (lambda (date) 'org-agenda-date))
+                         (org-agenda-overriding-header "\nToday's agenda\n")))
+                ;; Project
+                (tags-todo "+projects+project-TODO=\"DONE\"-TODO=\"CANCELLED\""
+                           ((org-agenda-overriding-header "Projects")
+                            (org-agenda-block-separator nil)))
+                ;; personal
+                (tags-todo "+home+personal-TODO=\"DONE\"-TODO=\"CANCELLED\""
+                           ((org-agenda-overriding-header "Personal\n")))
+                ;; habit
+                (tags-todo "+habits+TODO=\"TODO\""
+                           ((org-agenda-block-separator nil)
+                            (org-agenda-overriding-header "Routines")))
+                ;; unscheduled
+                (alltodo "-TODO=\"DONE\"-TODO=\"CANCELLED\""
+                         (;; with no timestamps or schedules
+                          (org-agenda-skip-function
+                           '(org-agenda-skip-entry-if 'timestamp 'deadline))
+                          (org-agenda-overriding-header "To refile"))))
+               ;; hide entries scheduled in the future
+               ((org-agenda-todo-ignore-scheduled 'future)
+                (org-agenda-tags-todo-honor-ignore-options t)
+                (org-agenda-todo-ignore-timestamp 'future)))
+              ))
+      #+end_src
+***** week view
+      This view is based on the value of =org-agenda-start-on-weekday= and =org-agenda-weekend-days=
+      #+begin_src emacs-lisp
+      (add-to-list 'org-agenda-custom-commands
+                   `("dw" "Weekly Dashboard"
+                     ((agenda ""
+                              ((org-agenda-span 'week)
+                               ;; don't show dates with no entries
+                               (org-agenda-show-all-dates nil)
+                               ;; don't include habits
+                               (org-agenda-skip-function
+                                `(org-agenda-skip-entry-if
+                                  'regexp ":STYLE:.*habit.*"))
+                               ;; only search these types
+                               (org-agenda-entry-types '(:deadline :scheduled :timestamp)))))))
+      #+end_src
+***** monthly
+      #+begin_src emacs-lisp
+      (add-to-list 'org-agenda-custom-commands
+                   `("dm" "Monthly Dashboard"
+                     ((agenda ""
+                              ((org-agenda-span 'month)
+                               ;; don't show dates with no entries
+                               (org-agenda-show-all-dates nil)
+                               ;; don't include habits
+                               (org-agenda-skip-function
+                                `(org-agenda-skip-entry-if
+                                  'regexp ":STYLE:.*habit.*"))
+                               )))))
+      #+end_src
 *** org-clock
     #+begin_src emacs-lisp
     (setq org-clock-sound t
-	  org-clock-persist 'history
-	  org-clock-idle-time t
-	  org-clock-out-remove-zero-time-clocks t)
+    org-clock-persist 'history
+    org-clock-idle-time 15
+    org-clock-out-remove-zero-time-clocks t)
     (org-clock-persistence-insinuate)
     #+end_src
 *** org-refile and archive
     #+begin_src emacs-lisp
     (setq org-refile-targets
-	  '((org-agenda-files :maxlevel . 9))
-	  org-refile-use-cache t
+    '((org-agenda-files :maxlevel . 9))
+    org-refile-use-cache t
 	  org-refile-use-outline-path 'file
 	  org-outline-path-complete-in-steps nil
 	  org-refile-allow-creating-parent-nodes 'confirm
