@@ -1234,6 +1234,7 @@ Turning on this mode disables line truncation set up by variables =truncate-line
 *** Variables
     #+begin_src emacs-lisp
     (customize-set-variable 'treemacs-persist-file (expand-file-name ".treemacs-persist" +emacs-data-dir))
+    (setq treemacs-hide-gitignored-files-mode t)
     #+end_src
 *** Functions
     #+begin_src emacs-lisp :tangle no
@@ -1244,6 +1245,7 @@ Turning on this mode disables line truncation set up by variables =truncate-line
           (ace-flip-window)
         (treemacs-select-window)))
     (treemacs-peek-mode 1)
+    (treemacs-indicate-top-scroll-mode 1)
     #+end_src
 *** Keybinding
     To switch from a normal window to a /treemacs/ window add ~C-u~ before the keybinding (~C-u C-x o~).
