@@ -4029,7 +4029,7 @@ Turning on this mode disables line truncation set up by variables =truncate-line
 *** package
     #+begin_src emacs-lisp
     (straight-use-package 'sly)
-    (require 'sly-autoloads)
+    ;;(require 'sly-autoloads)
     #+end_src
 *** config
     #+begin_src emacs-lisp
