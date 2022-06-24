@@ -643,12 +643,16 @@ Turning on this mode disables line truncation set up by variables =truncate-line
     (require 'which-key)
     (which-key-mode)
     (which-key-setup-side-window-bottom)
-    (setq whichkey-sort-order #'which-key-order-alpha
-	  which-key-sort-uppercase-first nil
-	  which-key-add-column-padding 1
-	  which-key-max-display-columns nil
-	  which-key-min-display-lines 6
-	  which-key-side-window-slot -10)
+    (setq which-key-sort-order #'which-key-key-order-alpha
+          which-key-sort-uppercase-first nil
+          which-key-add-column-padding 1
+          which-key-max-display-columns nil
+          which-key-min-display-lines 6
+          which-key-side-window-slot -10)
+    #+end_src
+*** keybinding
+    #+begin_src emacs-lisp
+    (define-key which-key-mode-map (kbd "C-x <f5>") 'which-key-C-h-dispatch)
     #+end_src
 *** Footer
     #+begin_src emacs-lisp
@@ -5466,7 +5470,7 @@ Turning on this mode disables line truncation set up by variables =truncate-line
     #+begin_src emacs-lisp
     (when (featurep 'which-key)
       (setq which-key-use-C-h-commands nil
-	    prefix-help-command #'embark-prefix-help-command))
+            prefix-help-command #'embark-prefix-help-command))
     #+end_src
 *** Footer
     #+begin_src emacs-lisp
