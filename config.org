@@ -2794,24 +2794,22 @@ Turning on this mode disables line truncation set up by variables =truncate-line
     #+end_src
 *** Todos and tags
     #+begin_src emacs-lisp
-      (setq org-todo-keywords
-            '((sequence "TODO(t!)"
-                        "PROG(p@/!)"
-                        "WAITING(w@/!)"
-                        "NEXT(n@/!)"
-                        "MAYBE(m!)"
-                        "|"
-                        "DONE(d!)"
-                        "CANCELLED(c@/!)")))
+    (setq org-todo-keywords
+          '((sequence "TODO(t!)" ;; Must
+                      "PROG(p@/!)" ;; Ongoing
+                      "WAITING(w@/!)" ;; Perhaps waiting for other tasks?
+                      "NEXT(n@/!)" ;; Definitely done after this or other tasks
+                      "MAYBE(m!)" ;; tentative
+                      "|"
+                      "DONE(d!)"
+                      "CANCELLED(c@/!)")))
 
-      (setq org-todo-keyword-faces
-            '(("TODO" . (:foreground "#dc322f" :weight bold))
-              ("PROG" . (:foreground "#b58900"))
-              ("WAITING" . (:foreground "#859900"))
-              ("DONE" . (:foreground "#2aa198"))
-              ("MAYBE" . (:foreground "#FF2AFC"))
-              ("CANCELLED" . (:foreground "#657b83"))))
-      (setq org-complete-tags-always-offer-all-agenda-tags nil)
+    ;; only sets the ones that are not default
+    (setq org-todo-keyword-faces
+          '(("WAITING" . (:foreground "#859900"))
+            ("MAYBE" . (:foreground "#FF2AFC"))
+            ("CANCELLED" . (:foreground "#657b83"))))
+    (setq org-complete-tags-always-offer-all-agenda-tags nil)
     #+end_src
 *** Attach
     #+begin_src emacs-lisp
