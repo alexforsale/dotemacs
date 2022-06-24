@@ -2748,7 +2748,7 @@ Turning on this mode disables line truncation set up by variables =truncate-line
 *** stuck-projects
     #+begin_src emacs-lisp
       (setq org-stuck-projects
-            '("+project/-MAYBE-DONE-SOMEDAY" ("TODO" "NEXT") nil ""))
+            '("+project/-DONE-CANCELLED" ("TODO" "PROG") nil ""))
     #+end_src
     This is a list of four items:
     1. A tags/todo/property matcher string that is used to identify a project.
