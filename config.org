@@ -2030,7 +2030,7 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
       #+end_src
       This alone should probably be enough, with just one slight problem: many of these commands doesn't do anything on a single-window frame. Luckily [[https://emacs.stackexchange.com/questions/17468/how-to-tell-if-more-than-one-window-is-open][stackexchange]] has the answer, the variable =one-window-p= will tell if the selected window is the only live window. The =:foreign-keys= means it can only be stopped with the blue heads.
 ***** hint
-      The next step is create a [[https://github.com/abo-abo/hydra/wiki/Conditional-Hydra][conditional hydra]], this is also why in the previous [[*defhydra][defhydra]], the =:hint= is set to nil, so this hint will show depending on the value of =one-window-p=.
+      The next step is create a [[https://github.com/abo-abo/hydra/wiki/Conditional-Hydra][conditional hydra]], this is also why in the previous [[*defhydra][defhydra]], the =:hint= is set to nil, since it's already use a descriptive docstring..
       #+begin_src emacs-lisp
       (setq hydra-window-menu/hint
             '(if (one-window-p)
@@ -2090,6 +2090,40 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
       ~C-c w~ is not bound to anything by default
       #+begin_src emacs-lisp
       (global-set-key (kbd "C-c w") 'hydra-window-menu/body)
+      #+end_src
+**** buffer
+     This one is rather simple, and not using any 3rd-party packages
+***** defhydra
+      #+begin_src emacs-lisp
+      (defhydra hydra-buffer-menu (:hint nil)
+        "
+      ^Move^                                      ^Action^
+      ^^^^^^^^^--------------------------------------------------------
+      _b_: switch to buffer          _k_: kill buffer       _R_: rename
+      _B_: switch buffer other frame _s_: save buffer       _r_: revert
+      _[_: prev buffer               _S_: save buffers      _i_: imenu
+      _]_: next buffer               _d_: kill this buffers
+      _o_: other buffer
+      _q_: quit
+      "
+        ("b" switch-to-buffer :color blue)
+        ("B" switch-to-buffer-other-frame :color blue)
+        ("d" kill-current-buffer :color blue)
+        ("i" ibuffer :color blue)
+        ("k" kill-buffer :color blue)
+        ("o" mode-line-other-buffer)
+        ("R" rename-buffer :color blue)
+        ("r" revert-buffer :color blue)
+        ("S" save-some-buffers :color blue)
+        ("s" save-buffer :color blue)
+        ("[" previous-buffer)
+        ("]" next-buffer)
+        ("q" keyboard-quit :color blue)
+        )
+      #+end_src
+***** keybinding
+      #+begin_src emacs-lisp
+      (global-set-key (kbd "C-c b") 'hydra-buffer-menu/body)
       #+end_src
 *** Footer
     #+begin_src emacs-lisp
@@ -2210,7 +2244,7 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
      (+config/leader-def
       :states '(normal visual)
       "bb" 'switch-to-buffer
-      "br" 'rename-buffer
+      "bR" 'rename-buffer
       "bd" 'kill-current-buffer
       "bi" 'ibuffer
       "bk" 'kill-buffer
