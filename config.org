@@ -3599,7 +3599,10 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
       (make-directory (expand-file-name "desktop/" +emacs-data-dir) t)
       (setq desktop-dirname (expand-file-name "desktop/" +emacs-data-dir)
             desktop-path
-            (list desktop-dirname)))
+            (list desktop-dirname))
+      desktop-auto-save-timeout 180
+      desktop-restore-frames nil)
+    (desktop-save-mode 1)
     #+end_src
 *** use /xdg-open/ for browsing
     #+begin_src emacs-lisp
