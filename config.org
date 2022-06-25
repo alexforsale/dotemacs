@@ -1952,6 +1952,11 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
     (straight-use-package 'hydra)
     (require 'hydra)
     #+end_src
+*** variables
+    #+begin_src emacs-lisp
+    (setq hydra-look-for-remap t)
+    #+end_src
+    =hydra-look-for-remap= will detect for a remap and call the remapped command instead.
 *** hydra remapping
 **** yank
      #+begin_src emacs-lisp
