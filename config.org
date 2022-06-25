@@ -3582,11 +3582,14 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
     #+begin_src emacs-lisp
     (straight-use-package 'flycheck)
     #+end_src
+**** checkers
+     check the list of supported languages at the [[https://www.flycheck.org/en/latest/user/quickstart.html][official website]].
 *** consult integration
     #+begin_src emacs-lisp
     (when (featurep 'consult)
       (straight-use-package 'consult-flycheck))
-    (global-flycheck-mode)
+    ;;(global-flycheck-mode)
+    (add-hook 'prog-mode-hook #'flyspell-prog-mode)
     (when (featurep 'consult)
       (require 'consult-flycheck)
       (with-eval-after-load 'config-general
