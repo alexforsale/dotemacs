@@ -3604,6 +3604,11 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
       desktop-restore-frames nil)
     (desktop-save-mode 1)
     #+end_src
+*** savehist
+    #+begin_src emacs-lisp
+    (customize-set-variable 'savehist-file (expand-file-name "history" +emacs-data-dir))
+    (savehist-mode 1)
+    #+end_src
 *** use /xdg-open/ for browsing
     #+begin_src emacs-lisp
     (setq browse-url-generic-program "xdg-open")
