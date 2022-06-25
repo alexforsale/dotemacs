@@ -1929,9 +1929,14 @@ Turning on this mode disables line truncation set up by variables =truncate-line
     (provide 'config-jinja2-mode)
     ;;; config-jinja2-mode.el ends here
     #+end_src
-** hydra
+** TODO hydra
    :PROPERTIES:
    :header-args: :tangle (expand-file-name "modules/config-hydra.el" user-emacs-directory)
+   :END:
+   :LOGBOOK:
+   - Note taken on [2022-06-25 Sat 14:09] \\
+     find a way to integrate hydra into my workflow
+   - State "TODO"       from              [2022-06-25 Sat 14:09]
    :END:
 *** header
     #+begin_src emacs-lisp
@@ -1950,28 +1955,28 @@ Turning on this mode disables line truncation set up by variables =truncate-line
 **** yank
      #+begin_src emacs-lisp
      (cond ((featurep 'consult)
-	    (defhydra hydra-yank-pop ()
-	      "yank"
-	      ("C-y" yank nil)
-	      ("M-y" yank-pop nil)
-	      ("y" (yank-pop 1) "next")
-	      ("Y" (yank-pop -1) "prev")
-	      ("l" consult-yank-from-kill-ring "list" :color blue)))
-	   ((featurep 'helm)
-	    (defhydra hydra-yank-pop ()
-	      "yank"
-	      ("C-y" yank nil)
-	      ("M-y" yank-pop nil)
-	      ("y" (yank-pop 1) "next")
-	      ("Y" (yank-pop -1) "prev")
-	      ("l" helm-show-kill-ring "list" :color blue)))
-	   (t
-	    (defhydra hydra-yank-pop ()
-	      "yank"
-	      ("C-y" yank nil)
-	      ("M-y" yank-pop nil)
-	      ("y" (yank-pop 1) "next")
-	      ("Y" (yank-pop -1) "prev"))))
+            (defhydra hydra-yank-pop ()
+              "yank"
+              ("C-y" yank nil)
+              ("M-y" yank-pop nil)
+              ("y" (yank-pop 1) "next")
+              ("Y" (yank-pop -1) "prev")
+              ("l" consult-yank-from-kill-ring "list" :color blue)))
+           ((featurep 'helm)
+            (defhydra hydra-yank-pop ()
+              "yank"
+              ("C-y" yank nil)
+              ("M-y" yank-pop nil)
+              ("y" (yank-pop 1) "next")
+              ("Y" (yank-pop -1) "prev")
+              ("l" helm-show-kill-ring "list" :color blue)))
+           (t
+            (defhydra hydra-yank-pop ()
+              "yank"
+              ("C-y" yank nil)
+              ("M-y" yank-pop nil)
+              ("y" (yank-pop 1) "next")
+              ("Y" (yank-pop -1) "prev"))))
      (global-set-key [remap yank-pop] #'hydra-yank-pop/yank-pop)
      (global-set-key [remap yank] #'hydra-yank-pop/yank)
      #+end_src
