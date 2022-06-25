@@ -1378,6 +1378,7 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
     (global-so-long-mode 1)
     #+end_src
 *** Make shebang (#!) file executable when saved.
+    from [[https://emacsredux.com/blog/2021/09/29/make-script-files-executable-automatically/][emacsredux]]:
     #+begin_src emacs-lisp
     (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
     #+end_src
