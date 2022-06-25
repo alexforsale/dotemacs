@@ -2426,8 +2426,11 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
     (require 'aggressive-indent)
     #+end_src
 *** config
+    Only activate on selected modes
     #+begin_src emacs-lisp
-    (global-aggressive-indent-mode 1)
+    ;; this is for global mode
+    ;;(global-aggressive-indent-mode 1)
+    (add-hook 'prog-mode-hook #'aggressive-indent-mode)
     #+end_src
 *** Footer
     #+begin_src emacs-lisp
