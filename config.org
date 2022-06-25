@@ -749,12 +749,12 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
     #+begin_src emacs-lisp
     (setq persp-initial-frame-name "Main")
     (setq persp-state-default-file (expand-file-name "statesave" +emacs-data-dir))
-    (customize-set-variable 'persp-mode-prefix-key (kbd "C-c TAB"))
     #+end_src
 *** config
     #+begin_src emacs-lisp
     (unless (equal persp-mode t)
       (persp-mode))
+    (setq persp-mode-prefix-key (kbd "C-c TAB"))
     #+end_src
 *** keybinding
     #+begin_src emacs-lisp
