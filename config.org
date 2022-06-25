@@ -3955,7 +3955,7 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
     #+end_src
 *** keybinding
 **** hydra
-     #+begin_src emacs-lisp
+     #+begin_src emacs-lisp :tangle no
      (when (featurep 'hydra)
        (defhydra hydra-git-gutter (global-map
                                    "C-c g")
