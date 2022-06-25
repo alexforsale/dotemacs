@@ -2106,7 +2106,7 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
       ^^^^^^^^^--------------------------------------------------------
       _b_: switch to buffer          _k_: kill buffer       _R_: rename
       _B_: switch buffer other frame _s_: save buffer       _r_: revert
-      _[_: prev buffer               _S_: save buffers      _i_: imenu
+      _[_: prev buffer               _S_: save buffers      _i_: ibuffer
       _]_: next buffer               _d_: kill this buffers
       _o_: other buffer
       _q_: quit
