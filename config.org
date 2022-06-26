@@ -3144,6 +3144,10 @@ show entities as utf-8 characters.
 #+begin_src emacs-lisp
 (setq org-pretty-entities t)
 #+end_src
+**** follows-link
+#+begin_src emacs-lisp
+(setq org-return-follows-link t)
+#+end_src
 *** footer
 #+begin_src emacs-lisp
 (provide 'builtin-org)
