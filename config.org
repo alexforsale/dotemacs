@@ -69,6 +69,7 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
    ;; (require 'config-rainbow-mode)
    ;; (require 'config-rainbow-delimiters)
    ;; (require 'config-hl-todo)
+   ;; (require 'config-diff-hl)
    (require 'config-diminish)
    ;; (require 'config-dashboard)
    ;; (require 'config-alert)
@@ -1027,6 +1028,40 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
     #+begin_src emacs-lisp
     (provide 'config-hl-todo)
     ;;; config-hl-todo.el ends here
+    #+end_src
+** diff-hl
+   :PROPERTIES:
+   :header-args: :tangle (expand-file-name "modules/config-diff-hl.el" user-emacs-directory)
+   :END:
+*** header
+    #+begin_src emacs-lisp
+    ;;; config-hl-todo.el --- Summary -*- lexical-binding: t -*-
+    ;;; Commentary:
+    ;;; Code:
+    #+end_src
+*** package
+    #+begin_src emacs-lisp
+    (straight-use-package 'diff-hl)
+    #+end_src
+*** config
+    #+begin_src emacs-lisp
+    (global-diff-hl-mode)
+    (diff-hl-dir-mode)
+    (diff-hl-flydiff-mode)
+    (diff-hl-show-hunk-mouse-mode)
+    #+end_src
+*** variables
+    #+begin_src emacs-lisp
+    (when (featurep 'flycheck)
+      (setq flycheck-indication-mode 'right-fringe))
+    (when (featurep 'magit)
+      (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+      (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+    #+end_src
+*** Footer
+    #+begin_src emacs-lisp
+    (provide 'config-diff-hl)
+    ;;; config-diff-hl.el ends here
     #+end_src
 ** diminish
    :PROPERTIES:
