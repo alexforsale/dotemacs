@@ -1013,6 +1013,10 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
     (straight-use-package 'hl-todo)
     (require 'hl-todo)
     #+end_src
+*** variables
+    #+begin_src emacs-lisp
+    (setq hl-todo-wrap-movement t)
+    #+end_src
 *** config
     #+begin_src emacs-lisp
     (global-hl-todo-mode)
