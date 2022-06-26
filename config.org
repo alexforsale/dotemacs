@@ -763,8 +763,9 @@ Since the =+config/leader-def= is defined only when =evil= is loaded, evaluate t
 #+end_src
 *** variables
 #+begin_src emacs-lisp
-(setq persp-initial-frame-name "Main")
-(setq persp-state-default-file (expand-file-name "statesave" +emacs-data-dir))
+(setq persp-initial-frame-name "Main"
+      persp-state-default-file (expand-file-name "statesave" +emacs-data-dir)
+      persp-suppress-no-prefix-key-warning t)
 #+end_src
 *** config
 #+begin_src emacs-lisp
