@@ -2088,7 +2088,6 @@ This one I made it myself, surely there are other better ones.
   ("}" enlarge-window-horizontally)
   ("[" shrink-window)
   ("]" enlarge-window)
-  ("q" keyboard-quit :color blue)
   )
 #+end_src
 This alone should probably be enough, with just one slight problem: many of these commands doesn't do anything on a single-window frame. Luckily [[https://emacs.stackexchange.com/questions/17468/how-to-tell-if-more-than-one-window-is-open][stackexchange]] has the answer, the variable =one-window-p= will tell if the selected window is the only live window. The =:foreign-keys= means it can only be stopped with the blue heads.
@@ -2106,7 +2105,6 @@ single window:
 _s_: split vertical
 _v_: split horizontally
 _N_: Command other window
-_q_: quit
 " hydra-window-menu/heads))
              (define-key hydra-window-menu/keymap "d" nil)
              (define-key hydra-window-menu/keymap "D" nil)
@@ -2121,8 +2119,7 @@ _q_: quit
              (define-key hydra-window-menu/keymap "{" nil)
              (define-key hydra-window-menu/keymap "}" nil)
              (define-key hydra-window-menu/keymap "[" nil)
-             (define-key hydra-window-menu/keymap "]" nil)
-             (define-key hydra-window-menu/keymap "q" 'hydra-window-menu/keyboard-quit))
+             (define-key hydra-window-menu/keymap "]" nil))
          (prog1 (eval
                  (hydra--format nil '(nil nil :hint nil)
                                 "
@@ -2131,7 +2128,7 @@ _q_: quit
 _s_: split vertical        _o_: other-window   _=_: balance  _[_: shrink vertical  _{_: shrink horizontal
 _v_: split horizontally    _O_: ace-window     _+_: maximize _]_: enlarge vertical _}_: enlarge horizontal
 _N_: command other window  _d_: delete         _-_: minimize
-_q_: quit                  _D_: delete other
+^ ^                        _D_: delete other
 " hydra-window-menu/heads))
            (define-key hydra-window-menu/keymap "d" 'hydra-window-menu/delete-window)
            (define-key hydra-window-menu/keymap "D" 'hydra-window-menu/delete-other-windows)
@@ -2146,14 +2143,13 @@ _q_: quit                  _D_: delete other
            (define-key hydra-window-menu/keymap "{" 'hydra-window-menu/shrink-window-horizontally)
            (define-key hydra-window-menu/keymap "}" 'hydra-window-menu/enlarge-window-horizontally)
            (define-key hydra-window-menu/keymap "[" 'hydra-window-menu/shrink-window)
-           (define-key hydra-window-menu/keymap "]" 'hydra-window-menu/enlarge-window)
-           (define-key hydra-window-menu/keymap "q" 'hydra-window-menu/keyboard-quit))))
+           (define-key hydra-window-menu/keymap "]" 'hydra-window-menu/enlarge-window))))
 #+end_src
 ***** the keybinding
 ~C-c w~ is not bound to anything by default
 #+begin_src emacs-lisp
 (global-set-key (kbd "C-c w") 'hydra-window-menu/body)
-#+end_src
+#+End_src
 **** buffer
 This one is rather simple, and not using any 3rd-party packages
 ***** defhydra
