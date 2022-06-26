@@ -3139,6 +3139,11 @@ It's kinda ugly but makes editing easy.
       org-startup-folded nil ; no folding
       )
 #+end_src
+**** pretty entities
+show entities as utf-8 characters.
+#+begin_src emacs-lisp
+(setq org-pretty-entities t)
+#+end_src
 *** footer
 #+begin_src emacs-lisp
 (provide 'builtin-org)
