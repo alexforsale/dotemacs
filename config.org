@@ -52,6 +52,19 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
   (setq doom-solarized-dark-brighter-text t)
   (setq doom-solarized-dark-brighter-comments t)
   (setq doom-solarized-dark-brighter-modeline t))
+
+(with-eval-after-load 'modus-themes
+  (setq modus-themes-diffs 'modus-themes-success-deuteranopia
+        modus-themes-links '(no-underline faint)
+        modus-themes-syntax '(faint alt-syntax)
+        modus-themes-region '(bg-only)
+        modus-themes-fringes 'subtle
+        modus-themes-hl-line '(accented)
+        modus-themes-mode-line '(borderless accented)
+        modus-themes-prompts '(intense)
+        modus-themes-org-blocks 'subtle
+        modus-themes-completions 'opinionated
+        modus-themes-paren-match 'intense))
 #+end_src
 ** UI Packages
 #+begin_src emacs-lisp
