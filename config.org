@@ -3130,7 +3130,7 @@ It's kinda ugly but makes editing easy.
 (setq org-hide-emphasis-markers nil)
 #+end_src
 **** hooks
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (add-hook 'org-mode-hook 'variable-pitch-mode)
 (add-hook 'org-mode-hook 'visual-line-mode)
 #+end_src
