@@ -772,7 +772,6 @@ Since the =+config/leader-def= is defined only when =evil= is loaded, evaluate t
 #+begin_src emacs-lisp
 (unless (equal persp-mode t)
   (persp-mode))
-
 #+end_src
 *** keybinding
 #+begin_src emacs-lisp
@@ -2636,6 +2635,7 @@ Tangle this if you need the additional packages that bundled in =org-contrib=. C
 #+end_src
 *** general variables
 #+begin_src emacs-lisp
+;; alows single character alphabetical bullets
 (customize-set-variable 'org-list-allow-alphabetical t)
 ;; Make most of the default modules opt-in to lighten its first-time load
 ;; delay. I sincerely doubt most users use them all.
