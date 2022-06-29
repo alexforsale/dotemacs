@@ -2672,8 +2672,8 @@ Tangle this if you need the additional packages that bundled in =org-contrib=. C
 ;; Set org-properties to also apply to their sublevels.
 (setq org-use-property-inheritance t)
 
-(setq org-adapt-indentation t)
-(org-indent-mode 1)
+;; (setq org-adapt-indentation t)
+;; (org-indent-mode 1)
 #+end_src
 *** files
 #+begin_src emacs-lisp
