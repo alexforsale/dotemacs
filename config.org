@@ -3147,6 +3147,34 @@ _q_: quit
 #+begin_src emacs-lisp
 (global-set-key (kbd "C-c b") 'hydra-buffer-menu/body)
 #+end_src
+**** frame
+***** defhydra
+#+begin_src emacs-lisp
+(defhydra hydra-frame-menu (:color blue)
+  "
+ ^Action^
+^^^^^^^^^--------------------------------------------------------
+_m_: make-frame          _r_: raise-frame       _f_: ffap-other-frame
+_c_: clone-frame         _l_: lower-frame
+_o_: other-frame         _d_: delete-frame
+_O_: delete-other-frames _D_: dired-other-frame
+"
+
+  ("m" make-frame)
+  ("c" clone-frame)
+  ("o" other-frame)
+  ("O" delete-other-frames)
+  ("l" lower-frame)
+  ("r" raise-frame)
+  ("d" delete-frame)
+  ("D" dired-other-frame)
+  ("f" ffap-other-frame)
+  ())
+#+end_src
+***** keybinding
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-c F") 'hydra-frame-menu/body)
+#+end_src
 *** Footer
 #+begin_src emacs-lisp
 (provide 'config-hydra)
@@ -3629,8 +3657,8 @@ Tangle this if you need the additional packages that bundled in =org-contrib=. C
   ;;program to send notification with
   (setq org-show-notification-handler "notify-send")
 
-  ;; (setq org-src-preserve-indentation nil
-  ;;       org-edit-src-content-indentation 0)
+  (setq org-src-preserve-indentation nil
+        org-edit-src-content-indentation 0)
 
   ;; Set org-properties to also apply to their sublevels.
   (setq org-use-property-inheritance t)
@@ -4099,7 +4127,7 @@ It's kinda ugly but makes editing easy.
 #+end_src
 **** startups
 This should be set per file
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (setq org-startup-indented t ; turn on `org-indent-mode' at startup
       org-startup-with-inline-images t ; show inline images
       org-startup-align-all-tables t ; align all tables when visiting a file
