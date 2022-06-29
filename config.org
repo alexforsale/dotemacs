@@ -3135,6 +3135,7 @@ It's kinda ugly but makes editing easy.
 (add-hook 'org-mode-hook 'visual-line-mode)
 #+end_src
 **** startups
+This should be set per file
 #+begin_src emacs-lisp :tangle no
 (setq org-startup-indented t ; turn on `org-indent-mode' at startup
       org-startup-with-inline-images t ; show inline images
