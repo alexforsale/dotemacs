@@ -5882,6 +5882,9 @@ Whether Emacs should set window titles to an /Emacs/ frame in an XTerm.
 #+end_src
 
 * local-variables
+# Local Variables:
+# eval: (add-hook 'after-save-hook (lambda ()(if (y-or-n-p "Tangle?")(org-babel-tangle))) nil t)
+# End:
 
 * Footnotes
 [fn:4] https://roswell.github.io/
@@ -5890,6 +5893,3 @@ Whether Emacs should set window titles to an /Emacs/ frame in an XTerm.
 [fn:2] https://www.emacswiki.org/emacs/GccEmacs
 
 [fn:1] https://www.gnu.org/software/emacs/manual/html_node/emacs/Early-Init-File.html
-# Local Variables:
-# eval: (add-hook 'after-save-hook (lambda ()(if (y-or-n-p "Tangle?")(org-babel-tangle))) nil t)
-# End:
