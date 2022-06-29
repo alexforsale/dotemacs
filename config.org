@@ -2635,45 +2635,45 @@ Tangle this if you need the additional packages that bundled in =org-contrib=. C
 #+end_src
 *** general variables
 #+begin_src emacs-lisp
-;; alows single character alphabetical bullets
-(customize-set-variable 'org-list-allow-alphabetical t)
-;; Make most of the default modules opt-in to lighten its first-time load
-;; delay. I sincerely doubt most users use them all.
-(defvar org-modules
-  '(;; ol-w3m
-    ;; ol-bbdb
-    ol-bibtex
-    ;; ol-docview
-    ;; ol-gnus
-    ;; ol-info
-    ;; ol-irc
-    ;; ol-mhe
-    ;; ol-rmail
-    ;; ol-eww
-    ))
-;; Save target buffer after archiving a node.
-(setq org-archive-subtree-save-file-p t)
-;; Don't number headings with these tags
-(customize-set-variable  'org-num-face '(:inherit org-special-keyword :underline nil :weight bold)
-      org-num-skip-tags '("noexport" "nonum"))
-;; Prevent modifications made in invisible sections of an org document, as
-;; unintended changes can easily go unseen otherwise.
-(setq org-catch-invisible-edits 'smart)
-;; Global ID state means we can have ID links anywhere. This is required for
-;; `org-brain', however.
-(setq org-id-locations-file-relative t)
+  ;; alows single character alphabetical bullets
+  (customize-set-variable 'org-list-allow-alphabetical t)
+  ;; Make most of the default modules opt-in to lighten its first-time load
+  ;; delay. I sincerely doubt most users use them all.
+  (defvar org-modules
+    '(;; ol-w3m
+      ;; ol-bbdb
+      ol-bibtex
+      ;; ol-docview
+      ;; ol-gnus
+      ;; ol-info
+      ;; ol-irc
+      ;; ol-mhe
+      ;; ol-rmail
+      ;; ol-eww
+      ))
+  ;; Save target buffer after archiving a node.
+  (setq org-archive-subtree-save-file-p t)
+  ;; Don't number headings with these tags
+  (customize-set-variable  'org-num-face '(:inherit org-special-keyword :underline nil :weight bold))
+  (customize-set-variable 'org-num-skip-tags '("noexport" "nonum"))
+  ;; Prevent modifications made in invisible sections of an org document, as
+  ;; unintended changes can easily go unseen otherwise.
+  (setq org-catch-invisible-edits 'smart)
+  ;; Global ID state means we can have ID links anywhere. This is required for
+  ;; `org-brain', however.
+  (setq org-id-locations-file-relative t)
 
-;;program to send notification with
-(setq org-show-notification-handler "notify-send")
+  ;;program to send notification with
+  (setq org-show-notification-handler "notify-send")
 
-;; (setq org-src-preserve-indentation nil
-;;       org-edit-src-content-indentation 0)
+  ;; (setq org-src-preserve-indentation nil
+  ;;       org-edit-src-content-indentation 0)
 
-;; Set org-properties to also apply to their sublevels.
-(setq org-use-property-inheritance t)
+  ;; Set org-properties to also apply to their sublevels.
+  (setq org-use-property-inheritance t)
 
-;; (setq org-adapt-indentation t)
-;; (org-indent-mode 1)
+  (setq org-adapt-indentation t)
+  ;; (org-indent-mode 1)
 #+end_src
 *** files
 #+begin_src emacs-lisp
