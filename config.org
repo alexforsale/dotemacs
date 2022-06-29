@@ -2630,7 +2630,8 @@ Only activate on selected modes
 ;;; Code:
 #+end_src
 *** org-contrib
-#+begin_src emacs-lisp
+Tangle this if you need the additional packages that bundled in =org-contrib=. Check the [[https://orgmode.org/worg/org-contrib/][website]] for details of packages it contains.
+#+begin_src emacs-lisp :tangle no
 (straight-use-package 'org-contrib)
 #+end_src
 *** general variables
