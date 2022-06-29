@@ -793,8 +793,7 @@ Since the =+config/leader-def= is defined only when =evil= is loaded, evaluate t
 #+end_src
 *** hooks
 #+begin_src emacs-lisp
-(unless (or (string= "exwm" (getenv "DESKTOP_SESSION"))
-            (getenv "GUIX_LOCPATH"))
+(unless (string= "exwm" (getenv "DESKTOP_SESSION"))
   (add-hook 'emacs-startup-hook (lambda () (persp-state-load persp-state-default-file)))
   (add-hook 'kill-emacs-hook #'persp-state-save))
 #+end_src
@@ -3183,8 +3182,7 @@ show entities as utf-8 characters.
 #+end_src
 *** package
 #+begin_src emacs-lisp
-(if (or (getenv "GUIX_LOCPATH")
-        (string= "exwm" (getenv "DESKTOP_SESSION")))
+(if (getenv "GUIX_LOCPATH")
     (progn
       (straight-use-package '(org-roam :type built-in))
       (straight-use-package '(emacsql :type built-in))
@@ -5182,8 +5180,7 @@ Whether Emacs should set window titles to an /Emacs/ frame in an XTerm.
 ;;; Code:
 #+end_src
 #+begin_src emacs-lisp
-(if (or (getenv "GUIX_LOCPATH")
-        (string= "exwm" (getenv "DESKTOP_SESSION")))
+(if (getenv "GUIX_LOCPATH")
     (straight-use-package '(vterm :type built-in))
   (straight-use-package 'vterm))
 (require 'vterm)
