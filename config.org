@@ -765,13 +765,14 @@ Since the =+config/leader-def= is defined only when =evil= is loaded, evaluate t
 #+begin_src emacs-lisp
 (setq persp-initial-frame-name "Main"
       persp-state-default-file (expand-file-name "statesave" +emacs-data-dir)
-      persp-suppress-no-prefix-key-warning t)
+      persp-suppress-no-prefix-key-warning t
+      persp-mode-prefix-key (kbd "C-c TAB"))
 #+end_src
 *** config
 #+begin_src emacs-lisp
 (unless (equal persp-mode t)
   (persp-mode))
-(setq persp-mode-prefix-key (kbd "C-c TAB"))
+
 #+end_src
 *** keybinding
 #+begin_src emacs-lisp
