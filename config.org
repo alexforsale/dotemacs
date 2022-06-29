@@ -2663,6 +2663,7 @@ Tangle this if you need the additional packages that bundled in =org-contrib=. C
 ;; `org-brain', however.
 (setq org-id-locations-file-relative t)
 
+;;program to send notification with
 (setq org-show-notification-handler "notify-send")
 
 (setq org-src-preserve-indentation nil
