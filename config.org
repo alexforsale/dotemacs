@@ -2666,8 +2666,8 @@ Tangle this if you need the additional packages that bundled in =org-contrib=. C
 ;;program to send notification with
 (setq org-show-notification-handler "notify-send")
 
-(setq org-src-preserve-indentation nil
-      org-edit-src-content-indentation 0)
+;; (setq org-src-preserve-indentation nil
+;;       org-edit-src-content-indentation 0)
 
 ;; Set org-properties to also apply to their sublevels.
 (setq org-use-property-inheritance t)
