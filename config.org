@@ -3569,6 +3569,16 @@ see [[https://www.gnu.org/software/emacs/manual/html_node/org/Languages.html][he
   ;; unintended changes can easily go unseen otherwise.
   (setq org-catch-invisible-edits 'smart)
 #+end_src
+**** don't treat angled brackets as parentheses
+from https://emacs.stackexchange.com/questions/50216/org-mode-code-block-parentheses-mismatch
+#+begin_src emacs-lisp
+  (defun org-syntax-table-modify ()
+    "Modify `org-mode-syntax-table' for the current org buffer."
+    (modify-syntax-entry ?< "." org-mode-syntax-table)
+    (modify-syntax-entry ?> "." org-mode-syntax-table))
+
+  (add-hook 'org-mode-hook #'org-syntax-table-modify)
+#+end_src
 *** footer
 #+begin_src emacs-lisp
   (provide 'builtin-org)
