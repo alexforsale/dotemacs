@@ -1410,6 +1410,10 @@ To switch from a normal window to a /treemacs/ window add ~C-u~ before the keybi
                 tab-always-indent nil)
   (setq tabify-regexp "^\t* [ \t]+")
 #+end_src
+*** set the behaviour of ~TAB~ completion
+#+begin_src emacs-lisp
+  (setq tab-first-completion 'complete)
+#+end_src
 *** footer
 #+begin_src emacs-lisp
   (provide 'builtin-editor)
