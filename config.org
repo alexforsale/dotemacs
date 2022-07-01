@@ -1423,6 +1423,11 @@ To switch from a normal window to a /treemacs/ window add ~C-u~ before the keybi
 #+begin_src emacs-lisp
   (customize-set-variable 'kill-do-not-save-duplicates t)
 #+end_src
+*** Make shebang (#!) file executable when saved.
+from [[https://emacsredux.com/blog/2021/09/29/make-script-files-executable-automatically/][emacsredux]]:
+#+begin_src emacs-lisp
+  (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+#+end_src
 *** footer
 #+begin_src emacs-lisp
   (provide 'builtin-editor)
