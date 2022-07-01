@@ -3650,6 +3650,11 @@ from https://emacs.stackexchange.com/questions/50216/org-mode-code-block-parenth
 
   (add-hook 'org-mode-hook #'org-syntax-table-modify)
 #+end_src
+**** allow alphabetical bullets
+#+begin_src emacs-lisp
+  ;; alows single character alphabetical bullets
+  (customize-set-variable 'org-list-allow-alphabetical t)
+#+end_src
 *** footer
 #+begin_src emacs-lisp
   (provide 'builtin-org)
