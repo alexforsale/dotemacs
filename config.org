@@ -1432,6 +1432,10 @@ from [[https://emacsredux.com/blog/2021/09/29/make-script-files-executable-autom
 #+begin_src emacs-lisp
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 #+end_src
+*** Easily navigate sillycased words.
+#+begin_src emacs-lisp
+  (global-subword-mode 1)
+#+end_src
 *** footer
 #+begin_src emacs-lisp
   (provide 'builtin-editor)
