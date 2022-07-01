@@ -1428,6 +1428,10 @@ from [[https://emacsredux.com/blog/2021/09/29/make-script-files-executable-autom
 #+begin_src emacs-lisp
   (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 #+end_src
+*** Delete trailing whitespace on save.
+#+begin_src emacs-lisp
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+#+end_src
 *** footer
 #+begin_src emacs-lisp
   (provide 'builtin-editor)
