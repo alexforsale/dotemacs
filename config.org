@@ -3655,6 +3655,10 @@ from https://emacs.stackexchange.com/questions/50216/org-mode-code-block-parenth
   ;; alows single character alphabetical bullets
   (customize-set-variable 'org-list-allow-alphabetical t)
 #+end_src
+**** save target buffer after archiving nodes
+#+begin_src emacs-lisp
+  (setq org-archive-subtree-save-file-p t)
+#+end_src
 *** footer
 #+begin_src emacs-lisp
   (provide 'builtin-org)
