@@ -3633,6 +3633,10 @@ see [[https://www.gnu.org/software/emacs/manual/html_node/org/Languages.html][he
 #+begin_src emacs-lisp
   (setq org-hide-leading-stars t)
 #+end_src
+**** notify-send
+#+begin_src emacs-lisp
+  (setq org-show-notification-handler "notify-send")
+#+end_src
 *** editing
 **** smart invisible edits
 #+begin_src emacs-lisp
