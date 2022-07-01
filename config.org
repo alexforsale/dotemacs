@@ -170,6 +170,7 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
   ;; (require 'config-hugo)
   ;; (require 'config-devdocs)
   ;; (require 'config-guix)
+  (require 'config-no-littering)
 #+end_src
 ** Theme
 #+begin_src emacs-lisp
@@ -5446,6 +5447,43 @@ from doom:
 #+begin_src emacs-lisp
   (provide 'config-guix)
   ;;; config-guix.el ends here
+#+end_src
+** no-littering
+:PROPERTIES:
+:header-args: :tangle (expand-file-name "modules/config-no-littering.el" user-emacs-directory)
+:END:
+Keeps our =~/.emacs.d= clean
+*** header
+#+begin_src emacs-lisp
+  ;;; config-no-littering.el --- Summary -*- lexical-binding: t -*-
+  ;;; Commentary:
+  ;;; Code:
+#+end_src
+*** package
+#+begin_src emacs-lisp
+  (straight-use-package 'no-littering)
+#+end_src
+*** config
+#+begin_src emacs-lisp
+  (customize-set-variable 'no-littering-etc-directory (expand-file-name "etc/" +emacs-data-dir))
+  (customize-set-variable 'no-littering-var-directory (expand-file-name "var/" +emacs-data-dir))
+
+  (unless (file-directory-p no-littering-etc-directory)
+    (make-directory no-littering-etc-directory :parents))
+
+  (unless (file-directory-p no-littering-var-directory)
+    (make-directory no-littering-var-directory :parents))
+
+  (require 'no-littering)
+
+  (with-eval-after-load 'recentf
+    (add-to-list 'recentf-exclude no-littering-var-directory)
+    (add-to-list 'recentf-exclude no-littering-etc-directory))
+#+end_src
+*** footer
+#+begin_src emacs-lisp
+  (provide 'config-no-littering)
+  ;;; config-no-littering.el ends here
 #+end_src
 * email
 ** builtins
