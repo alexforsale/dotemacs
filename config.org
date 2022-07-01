@@ -3663,6 +3663,10 @@ from https://emacs.stackexchange.com/questions/50216/org-mode-code-block-parenth
 #+begin_src emacs-lisp
   (setq org-archive-subtree-save-file-p t)
 #+end_src
+**** use property inheritance
+#+begin_src emacs-lisp
+  (setq org-use-property-inheritance t)
+#+end_src
 *** footer
 #+begin_src emacs-lisp
   (provide 'builtin-org)
