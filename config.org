@@ -1440,6 +1440,10 @@ from [[https://emacsredux.com/blog/2021/09/29/make-script-files-executable-autom
 #+begin_src emacs-lisp
   (global-auto-revert-mode 1)
 #+end_src
+*** don't confirm when following symlink files
+#+begin_src emacs-lisp
+  (setq vc-follow-symlinks t)
+#+end_src
 *** footer
 #+begin_src emacs-lisp
   (provide 'builtin-editor)
