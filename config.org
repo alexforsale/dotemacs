@@ -1391,12 +1391,17 @@ To switch from a normal window to a /treemacs/ window add ~C-u~ before the keybi
   (add-hook 'ielm-mode-hook 'eldoc-mode)
   (add-hook 'prog-mode-hook 'eldoc-mode)
 #+end_src
+<<<<<<< HEAD
 *** disable auto pairing for =<  >=
 #+begin_src emacs-lisp
   (electric-pair-mode 1)
   (add-function :before-until electric-pair-inhibit-predicate
                 (lambda (c) (eq c ?<   ;; >
                                 )))
+#+end_src
+*** Remove text in active region if inserting text.
+#+begin_src emacs-lisp
+  (delete-selection-mode 1)
 #+end_src
 *** footer
 #+begin_src emacs-lisp
