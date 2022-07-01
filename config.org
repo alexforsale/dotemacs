@@ -1403,6 +1403,13 @@ To switch from a normal window to a /treemacs/ window add ~C-u~ before the keybi
 #+begin_src emacs-lisp
   (delete-selection-mode 1)
 #+end_src
+*** Use spaces instead of tabs
+#+begin_src emacs-lisp
+  (setq-default indent-tabs-mode nil
+                tab-width 2
+                tab-always-indent nil)
+  (setq tabify-regexp "^\t* [ \t]+")
+#+end_src
 *** footer
 #+begin_src emacs-lisp
   (provide 'builtin-editor)
