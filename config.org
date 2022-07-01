@@ -1414,6 +1414,11 @@ To switch from a normal window to a /treemacs/ window add ~C-u~ before the keybi
 #+begin_src emacs-lisp
   (setq tab-first-completion 'complete)
 #+end_src
+*** Use "y" and "n" to confirm/negate prompt instead of "yes" and "no".
+#+begin_src emacs-lisp
+  (advice-add #'yes-or-no-p :override #'y-or-n-p)
+  (setq y-or-n-p-use-read-key t)
+#+end_src
 *** footer
 #+begin_src emacs-lisp
   (provide 'builtin-editor)
