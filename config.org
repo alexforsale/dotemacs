@@ -4674,8 +4674,14 @@ lsp server.
   ;;; Code:
 #+end_src
 *** package
+Use built-in package when in guix
 #+begin_src emacs-lisp
-  (straight-use-package 'magit)
+  ;; use built-in when in guix
+  (if (or (string= "guix" (getenv "DESKTOP_SESSION"))
+          (getenv "GUIX_LOCPATH"))
+      (straight-use-package '(magit :type built-in))
+    (straight-use-package 'magit))
+
   (straight-use-package 'diff-hl)
 #+end_src
 *** config
