@@ -415,7 +415,7 @@ If there's any /modules/ or other files needed, this is where to place it.
 * UI
 ** builtins
 :PROPERTIES:
-:header-args: :tangle (expand-file-name "modules/builtin-ui.el" user-emacs-directory)
+:header-args: :tangle (expand-file-name "modules/builtin-ui.el" user-emacs-directory) :mkdirp t
 :END:
 *** header
 #+begin_src emacs-lisp
@@ -1889,7 +1889,7 @@ with =post-forward-angle-brackets= means in the files =/foo/bar/mumble/name= and
 #+end_src
 ** csh-mode
 :PROPERTIES:
-:header-args: :tangle (expand-file-name "site-lisp/csh-mode.el" user-emacs-directory)
+:header-args: :tangle (expand-file-name "site-lisp/csh-mode.el" user-emacs-directory) :mkdirp t
 :END:
 *** header
 #+begin_src emacs-lisp
