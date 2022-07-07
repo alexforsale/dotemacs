@@ -3589,11 +3589,13 @@ Only activate on selected modes
 #+end_src
 *** package
 #+begin_src emacs-lisp
-(straight-use-package 'dockerfile-mode)
+  (straight-use-package 'dockerfile-mode)
+  (straight-use-package 'docker-compose-mode)
 #+end_src
 *** config
 #+begin_src emacs-lisp
   (require 'dockerfile-mode)
+  (require 'docker-compose-mode)
   (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 #+end_src
 *** Footer
