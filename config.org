@@ -112,6 +112,7 @@ To easily toggle the additional packages, create a =config-user.el= file inside 
   ;; (require 'config-general)
   ;; (require 'config-evil)
   ;; (require 'config-aggressive-indent-mode)
+  ;; (require 'config-dockerfile-mode)
 #+end_src
 ** Org packages
 #+begin_src emacs-lisp
