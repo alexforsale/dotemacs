@@ -3575,6 +3575,32 @@ Only activate on selected modes
   (provide 'config-aggressive-indent-mode)
   ;;; config-aggressive-indent-mode.el ends here
 #+end_src
+** dockerfile-mode
+:PROPERTIES:
+:header-args: :tangle (expand-file-name "modules/config-dockerfile-mode.el" user-emacs-directory)
+:END:
+*** header
+#+begin_src emacs-lisp
+  ;;; config-dockerfile-mode.el --- Summary -*- lexical-binding: t -*-
+  ;;; Commentary:
+  ;; This file is auto-generated from `config.org'
+  ;; See `https://java281.dynv6.net/~alexforsale/posts/Emacs-Configuration.html'
+  ;;; Code:
+#+end_src
+*** package
+#+begin_src emacs-lisp
+(straight-use-package 'dockerfile-mode)
+#+end_src
+*** config
+#+begin_src emacs-lisp
+  (require 'dockerfile-mode)
+  (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+#+end_src
+*** Footer
+#+begin_src emacs-lisp
+  (provide 'config-dockerfile-mode)
+  ;;; config-dockerfile-mode.el ends here
+#+end_src
 * Org
 ** base org configuration
 :PROPERTIES:
