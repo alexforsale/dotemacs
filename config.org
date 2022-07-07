@@ -1470,6 +1470,11 @@ with =post-forward-angle-brackets= means in the files =/foo/bar/mumble/name= and
 
   (add-to-list 'find-file-not-found-functions '+my-create-non-existent-directory)
 #+end_src
+*** disable lockfiles
+While it's better to have one, I have a bad habit of shutting down PC/Laptops with the power buttons, and the confirmation gets annoying.
+#+begin_src emacs-lisp
+  (setq create-lockfiles nil)
+#+end_src
 *** footer
 #+begin_src emacs-lisp
   (provide 'builtin-editor)
