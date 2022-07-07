@@ -1474,6 +1474,8 @@ with =post-forward-angle-brackets= means in the files =/foo/bar/mumble/name= and
 While it's better to have one, I have a bad habit of shutting down PC/Laptops with the power buttons, and the confirmation gets annoying.
 #+begin_src emacs-lisp
   (setq create-lockfiles nil)
+  (with-eval-after-load 'desktop
+    (setq desktop-load-locked-desktop t))
 #+end_src
 *** footer
 #+begin_src emacs-lisp
