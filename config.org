@@ -424,7 +424,7 @@ If there's any /modules/ or other files needed, this is where to place it.
   ;;; Commentary:
   ;;; Code:
 #+end_src
-**** Default fonts
+*** Default fonts
 Got this from [[https://emacsredux.com/blog/2021/12/22/check-if-a-font-is-available-with-emacs-lisp/][emacsredux]]:
 #+begin_src emacs-lisp
   (cond
